@@ -19,6 +19,11 @@ module.exports = {
         xxs: '0.625rem',
       },
       colors: {
+        brand: {
+          scarlet: {
+            500: '#FF2400',
+          },
+        },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

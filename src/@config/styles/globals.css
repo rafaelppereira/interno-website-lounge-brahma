@@ -71,7 +71,7 @@
       @apply border-border antialiased font-sans;
     }
     body {
-      @apply bg-background text-foreground;
+      @apply bg-zinc-100;
     }
   }
 
@@ -81,4 +81,8 @@
 
   ::-webkit-scrollbar-thumb {
     @apply bg-zinc-600
+  }
+
+  .container {
+    @apply max-w-6xl mx-auto px-8
   }
