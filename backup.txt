@@ -1,0 +1,219 @@
+import { Eye, HeartHandshake, Link2, Ticket, TicketPlus } from 'lucide-react'
+import { Link } from 'react-router-dom'
+
+import { nextGamesList } from '../../@config/utils/next-games-list'
+import { Button } from '../../components/ui/button'
+
+export function HomePage() {
+  return (
+    <main>
+      <section className="border-b-2 bg-zinc-100/60">
+        <div className="container flex items-center gap-10 py-16">
+          <div className="flex-[1.2]">
+            <span className="flex items-center font-extrabold uppercase text-red-700">
+              <HeartHandshake className="mr-2 size-4" />
+              Feito para quem ama o corinthians
+            </span>
+            <h2 className="mt-2 text-[2.5rem] font-extrabold leading-[2.8rem] tracking-tight text-zinc-700">
+              Viva a{' '}
+              <strong className="text-red-700">melhor experiência</strong>,{' '}
+              <br /> no Camarote Lounge Brahma <br /> da{' '}
+              <strong className="text-red-700">Neo Química Arena.</strong>
+            </h2>
+
+            <h4 className="mt-3 text-xl font-semibold text-gray-600">
+              Camarote Open Bar & Open Food com uma vista incrível para os jogos
+              do Corinthians.
+            </h4>
+
+            <div className="mt-4 flex items-center gap-4">
+              <Button
+                type="button"
+                className="bg-zinc-800"
+                title="Clique para ver os próximos jogos"
+              >
+                <Eye className="mr-2 size-4" />
+                Ver os próximos jogos
+              </Button>
+
+              <Link
+                to="/galeria"
+                title="Clique para acessar a galeria de fotos do Lounge Brahma"
+                className="flex items-center py-2 text-sm transition-all hover:opacity-60"
+              >
+                <Link2 className="mr-2 size-4" /> Acessar galeria de fotos
+              </Link>
+            </div>
+          </div>
+          <div className="relative flex-1">
+            <video
+              loop
+              muted
+              autoPlay
+              className="aspect-square h-full w-full rounded-md border-4 object-cover"
+              src="https://loungebrahma.com.br/wp-content/themes/lounge-brahma/assets/images/Snapinsta.app_video_2646FAC976DCBA08C53F7C81AD0E86BE_video_dashinit.mp4"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b-[16px] border-red-700 bg-zinc-900">
+        <div className="container flex items-end justify-between py-5">
+          <div>
+            <h2 className="text-xl font-semibold tracking-tight text-zinc-300">
+              Estamos esperando por você
+            </h2>
+            <p className="text-zinc-400">
+              Faça parte dessa experiência totalmente personalizada para você
+              acompanhar os jogos
+            </p>
+          </div>
+
+          <Button
+            type="button"
+            className="bg-zinc-800"
+            title="Clique para ver os próximos jogos"
+          >
+            <Ticket className="mr-2 size-4" />
+            Fazer parte do lounge
+          </Button>
+        </div>
+      </section>
+
+      <section className="border-b-2 bg-zinc-100/60">
+        <div className="container py-14">
+          <h2 className="border-l-4 border-l-red-700 pl-3 text-2xl font-bold text-zinc-700">
+            Nossos próximos jogos
+          </h2>
+
+          <div className="mt-10 grid grid-cols-3 gap-5">
+            {nextGamesList.map((game, i) => {
+              return (
+                <div key={i} className="overflow-hidden rounded-md border-4">
+                  <Link to={`comprar-ingressos/${game.slug}`}>
+                    <img
+                      src={game.thumbail}
+                      alt="Imagem do jogo"
+                      className="pointer-events-none h-96 w-full select-none object-cover"
+                    />
+                  </Link>
+
+                  <div className="flex w-full justify-center bg-red-700 py-2 text-zinc-100">
+                    <h2 className="text-md select-none font-bold uppercase">
+                      {game.date}
+                    </h2>
+                  </div>
+
+                  <div className="flex">
+                    <span className="flex flex-1 items-center justify-center bg-red-800 py-2 text-sm font-semibold text-zinc-100">
+                      {game.startTime}
+                    </span>
+                    <span className="flex flex-1 items-center justify-center bg-red-900 text-sm font-semibold text-zinc-100">
+                      {game.startGameTime}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-center py-3">
+                    <span className="font-bebas select-none text-3xl font-bold uppercase text-zinc-700">
+                      {game.gameTitle}
+                    </span>
+                  </div>
+
+                  <Button
+                    type="button"
+                    title="Clique para comprar os ingressos"
+                    className="w-full select-none rounded-none bg-red-700 font-bold uppercase hover:bg-red-800"
+                  >
+                    <TicketPlus className="mr-2 size-4" />
+                    Comprar ingressos
+                  </Button>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
+
+import { User } from 'lucide-react'
+import { Link } from 'react-router-dom'
+
+import { Button } from '../ui/button'
+
+export function Header() {
+  return (
+    <header className="fixed left-0 top-0 z-50 w-full">
+      <div className="w-full bg-zinc-900">
+        <div className="container flex h-10 items-center justify-between">
+          <div className="flex items-center text-sm font-semibold text-zinc-300">
+            <h2 className="mr-3 border-r border-r-zinc-500 pr-3">
+              contato@loungebrahma.com.br
+            </h2>
+            <span>(11) 99702-2394</span>
+          </div>
+
+          <div>
+            <img
+              alt="Bandeira do Brasil"
+              className="size-6 rounded-full border-2 border-zinc-500 object-cover"
+              src="https://static.vecteezy.com/ti/vetor-gratis/p1/8513713-ilustracaoial-realista-ondulada-brazil-bandeira-fundo-brasil-independence-day-gratis-vetor.jpg"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="border-b-4 border-red-800 bg-red-700">
+        <div className="container flex h-24 items-center justify-between">
+          <Link to="/" title="Clique para ir até a tela inicial">
+            <img
+              alt="Logo do Lounge Brahma"
+              className="pointer-events-none h-14 select-none"
+              src="https://loungebrahma.com.br/wp-content/themes/lounge-brahma/assets/images/logo-lounge-brahma-branco.png"
+            />
+          </Link>
+
+          <nav className="item-center flex gap-5 font-semibold text-zinc-100">
+            <Link
+              to="/#proximos-jogos"
+              title="Próximos jogos"
+              className="py-2 transition-all hover:brightness-75"
+            >
+              Próximos jogos
+            </Link>
+            <Link
+              to="/cadeiras-cativas"
+              title="Cadeira cativa - Camarote Lounge Brahma"
+              className="py-2 transition-all hover:brightness-75"
+            >
+              Cadeira cativa - Camarote Lounge Brahma
+            </Link>
+            <Link
+              to="/faca-seu-evento"
+              title="Faça seu evento"
+              className="py-2 transition-all hover:brightness-75"
+            >
+              Faça seu evento
+            </Link>
+            <Link
+              to="/perguntas-frequentes"
+              title="Pergutas frequentes"
+              className="py-2 transition-all hover:brightness-75"
+            >
+              FAQ
+            </Link>
+
+            <Button
+              type="button"
+              title="Minha conta"
+              className="bg-zinc-800 font-semibold"
+            >
+              <User className="mr-2 size-4" />
+              Minha conta
+            </Button>
+          </nav>
+        </div>
+      </div>
+    </header>
+  )
+}

@@ -3,18 +3,11 @@
 import { createBrowserRouter } from 'react-router-dom'
 
 import { HomePage } from '../pages/(home)/page'
-import { DefaultLayout } from '../pages/layout'
 
 const router: any = createBrowserRouter([
   {
     path: '',
-    element: <DefaultLayout />,
-    children: [
-      {
-        path: '',
-        element: <HomePage />,
-      },
-    ],
+    element: <HomePage />,
   },
 ])
 

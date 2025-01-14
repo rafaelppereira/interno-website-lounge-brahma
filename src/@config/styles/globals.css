@@ -71,7 +71,7 @@
       @apply border-border antialiased font-sans;
     }
     body {
-      @apply bg-zinc-100;
+      @apply bg-zinc-50;
     }
   }
 
@@ -85,4 +85,8 @@
 
   .container {
     @apply max-w-6xl mx-auto px-8
+  }
+
+  .font-bebas {
+    font-family: "Bebas Neue"
   }
