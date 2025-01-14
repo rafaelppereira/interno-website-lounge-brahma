@@ -71,7 +71,7 @@
       @apply border-border antialiased font-sans;
     }
     body {
-      @apply bg-zinc-50;
+      @apply bg-zinc-100;
     }
   }
 
@@ -90,3 +90,37 @@
   .font-bebas {
     font-family: "Bebas Neue"
   }
+
+
+  .swiper {
+    /* width: 100%; */
+    height: 100%;
+    user-select: none;
+  
+    display: 'flex';
+    align-items: center;
+  }
+  
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .swiper-pagination-bullet {
+    @apply bg-white !important;
+  
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+    border-radius: 9999px !important;
+    transition: all 0.2s ease-in-out !important;
+  }
+  
+  .swiper-pagination-bullet-active {
+    @apply bg-white !important;
+    width: 2rem !important;
+    height: 0.75rem !important;
+    border-radius: 9999px !important;
+    transition: all 0.2s ease-in-out !important;
+  }
+  

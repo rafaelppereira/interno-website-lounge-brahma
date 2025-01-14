@@ -23,6 +23,9 @@ module.exports = {
           scarlet: {
             500: '#FF2400',
           },
+          gold: {
+            500: '#daa520',
+          },
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
