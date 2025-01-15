@@ -1,10 +1,12 @@
 export interface Game {
   date: string
+  slug: string
   thumbail: string
+  opponent: string
   gameTitle: string
   startTime: string
+  shieldTime: string
   startGameTime: string
-  slug: string
 }
 
 export const nextGamesList: Game[] = [
@@ -16,6 +18,8 @@ export const nextGamesList: Game[] = [
     startGameTime: 'Jogo: 18H30min',
     gameTitle: 'Corinthians x Velo Clube',
     slug: 'corinthians-x-velo-clube',
+    shieldTime: '/escudos/velo-clube.png',
+    opponent: 'Velo Clube',
   },
   {
     date: 'Quarta-feira - 22/01/2025',
@@ -25,6 +29,8 @@ export const nextGamesList: Game[] = [
     startGameTime: 'Jogo: 21H35min',
     gameTitle: 'Corinthians x Água Santa',
     slug: 'corinthians-x-agua-santa',
+    shieldTime: '/escudos/agua-santa.png',
+    opponent: 'Água Santa',
   },
   {
     date: 'Sábado - 01/02/2025',
@@ -34,6 +40,8 @@ export const nextGamesList: Game[] = [
     startGameTime: 'Jogo: 18H30min',
     gameTitle: 'Corinthians x Noroeste',
     slug: 'corinthians-x-noroeste',
+    shieldTime: '/escudos/noroeste.png',
+    opponent: 'Noroeste',
   },
   {
     date: 'Domingo - 09/02/2025',
@@ -43,6 +51,8 @@ export const nextGamesList: Game[] = [
     startGameTime: 'Jogo: 20H30min',
     gameTitle: 'Corinthians x São Bernardo FC',
     slug: 'corinthians-x-sao-bernardo-fc',
+    shieldTime: '/escudos/sao-bernardo-fc.png',
+    opponent: 'São Bernardo FC',
   },
   {
     date: 'Quarta-feira - 12/02/2025',
@@ -52,6 +62,8 @@ export const nextGamesList: Game[] = [
     startGameTime: 'Jogo: 21H35min',
     gameTitle: 'Corinthians x Santos',
     slug: 'corinthians-x-santos',
+    shieldTime: '/escudos/santos.png',
+    opponent: 'Santos FC',
   },
   {
     date: 'Domingo - 23/02/2025',
@@ -61,5 +73,7 @@ export const nextGamesList: Game[] = [
     startGameTime: 'Jogo: 18H30min',
     gameTitle: 'Corinthians x Guarani',
     slug: 'corinthians-x-guarani',
+    shieldTime: '/escudos/guarani.png',
+    opponent: 'Guarani',
   },
 ]

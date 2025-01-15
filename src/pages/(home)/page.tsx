@@ -1,28 +1,47 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { MoreVertical, Mouse, Ticket, User, Users2 } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { Menu, Mouse, Ticket, User, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { FaFacebookF, FaRegImages, FaYoutube } from 'react-icons/fa'
 import { HiOutlineTicket } from 'react-icons/hi2'
 import { IoHelpCircleOutline } from 'react-icons/io5'
+import { MdOutlineChair, MdOutlineEmojiEvents } from 'react-icons/md'
 import { PiInstagramLogoThin } from 'react-icons/pi'
 import { Link } from 'react-router-dom'
 import { Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import { cn } from '../../@config/lib/cn'
 import { nextGamesList } from '../../@config/utils/next-games-list'
 import { Button } from '../../components/ui/button'
 
 export function HomePage() {
-  const [hasActiveDesktopHeader, setHasActiveDesktopHeader] = useState(true)
+  const [hasActiveDesktopHeader, setHasActiveDesktopHeader] = useState(false)
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if (window.scrollY <= 50) {
-        setHasActiveDesktopHeader(true)
+        if (window.innerWidth >= 1024) {
+          setHasActiveDesktopHeader(true)
+        }
       } else {
         setHasActiveDesktopHeader(false)
       }
     })
+  }, [])
+
+  useEffect(() => {
+    // const handleResize = () => {
+    //   if (window.innerWidth <= 1024) {
+    //     setHasActiveDesktopHeader(false)
+    //   } else {
+    //     setHasActiveDesktopHeader(true)
+    //   }
+    // }
+    // window.addEventListener('resize', handleResize)
+    // handleResize()
+    // return () => {
+    //   window.removeEventListener('resize', handleResize)
+    // }
   }, [])
 
   return (
@@ -30,7 +49,7 @@ export function HomePage() {
       <header className="z-50">
         {/* Sidebar */}
         {hasActiveDesktopHeader && (
-          <aside className="fixed left-0 top-0 z-50 w-28 rounded-br-2xl border-b-4 border-r-4 border-zinc-800 bg-zinc-950/80 py-10">
+          <aside className="fixed left-0 top-0 z-50 h-full w-28 rounded-br-2xl border-b-4 border-r-4 border-zinc-800 bg-zinc-950/80 py-10">
             <div className="p-4">
               <img
                 alt="Logo do Lounge Brahma"
@@ -39,35 +58,63 @@ export function HomePage() {
             </div>
 
             <nav className="mt-5">
-              <div className="flex cursor-pointer items-center justify-center bg-zinc-800 py-5 text-zinc-300 transition-all hover:brightness-75">
-                <HiOutlineTicket className="size-7" />
-              </div>
+              <Link to="/#proximos-jogos" className="group relative">
+                <div className="flex cursor-pointer items-center justify-center bg-zinc-800 py-5 text-zinc-300 transition-all hover:brightness-75">
+                  <HiOutlineTicket className="size-7" />
+                </div>
 
-              <div className="flex cursor-pointer items-center justify-center py-5 text-zinc-300 transition-all hover:bg-zinc-800 hover:brightness-75">
-                <FaRegImages className="size-7" />
-              </div>
+                <div className="invisible absolute left-28 top-0 whitespace-nowrap rounded-r-md bg-red-800 px-4 py-[1.35rem] font-semibold uppercase text-zinc-200 opacity-0 backdrop-blur-sm transition-all group-hover:visible group-hover:opacity-100">
+                  Próximos jogos
+                </div>
+              </Link>
 
-              <div className="flex cursor-pointer items-center justify-center py-5 text-zinc-300 transition-all hover:bg-zinc-800 hover:brightness-75">
-                <Users2 className="size-7" />
-              </div>
+              <Link to="/galeria" className="group relative">
+                <div className="flex cursor-pointer items-center justify-center py-5 text-zinc-300 transition-all hover:bg-zinc-800 hover:brightness-75">
+                  <FaRegImages className="size-7" />
+                </div>
 
-              <div className="flex cursor-pointer items-center justify-center py-5 text-zinc-300 transition-all hover:bg-zinc-800 hover:brightness-75">
-                <IoHelpCircleOutline className="size-7" />
-              </div>
+                <div className="invisible absolute left-28 top-0 whitespace-nowrap rounded-r-md bg-red-800 px-4 py-[1.35rem] font-semibold uppercase text-zinc-200 opacity-0 backdrop-blur-sm transition-all group-hover:visible group-hover:opacity-100">
+                  Galeria
+                </div>
+              </Link>
 
-              <div className="flex cursor-pointer items-center justify-center py-5 text-zinc-300 transition-all hover:bg-zinc-800 hover:brightness-75">
-                <MoreVertical className="size-7" />
-              </div>
+              <Link to="/cadeiras-cativas" className="group relative">
+                <div className="flex cursor-pointer items-center justify-center py-5 text-zinc-300 transition-all hover:bg-zinc-800 hover:brightness-75">
+                  <MdOutlineChair className="size-7" />
+                </div>
+                <div className="invisible absolute left-28 top-0 whitespace-nowrap rounded-r-md bg-red-800 px-4 py-[1.35rem] font-semibold uppercase text-zinc-200 opacity-0 backdrop-blur-sm transition-all group-hover:visible group-hover:opacity-100">
+                  Cadeira cativa - Camarote Lounge Brahma
+                </div>
+              </Link>
+
+              <Link to="/faca-seu-evento" className="group relative">
+                <div className="flex cursor-pointer items-center justify-center py-5 text-zinc-300 transition-all hover:bg-zinc-800 hover:brightness-75">
+                  <MdOutlineEmojiEvents className="size-7" />
+                </div>
+                <div className="invisible absolute left-28 top-0 whitespace-nowrap rounded-r-md bg-red-800 px-4 py-[1.35rem] font-semibold uppercase text-zinc-200 opacity-0 backdrop-blur-sm transition-all group-hover:visible group-hover:opacity-100">
+                  Faça seu evento
+                </div>
+              </Link>
+
+              <Link to="/#perguntas-frequentes" className="group relative">
+                <div className="flex cursor-pointer items-center justify-center py-5 text-zinc-300 transition-all hover:bg-zinc-800 hover:brightness-75">
+                  <IoHelpCircleOutline className="size-7" />
+                </div>
+
+                <div className="invisible absolute left-28 top-0 whitespace-nowrap rounded-r-md bg-red-800 px-4 py-[1.35rem] font-semibold uppercase text-zinc-200 opacity-0 backdrop-blur-sm transition-all group-hover:visible group-hover:opacity-100">
+                  FAQ
+                </div>
+              </Link>
             </nav>
           </aside>
         )}
 
         {/* Menu minha conta */}
         {hasActiveDesktopHeader && (
-          <div className="fixed right-20 top-0 z-50 flex bg-zinc-950/80 text-zinc-200">
+          <div className="fixed right-20 top-0 z-50 flex overflow-hidden rounded-b-md bg-zinc-950/80 text-zinc-200">
             <div className="bg-white">
               <img
-                src="/corinthians.png"
+                src="/escudos/corinthians.png"
                 alt="Escudo do time corinthians"
                 className="object-cove pointer-events-none size-16 select-none"
               />
@@ -86,15 +133,85 @@ export function HomePage() {
         )}
 
         {!hasActiveDesktopHeader && (
-          <div className="fixed left-0 top-0 z-50 h-20 w-full border-b border-zinc-800 bg-zinc-950/80">
-            daw
+          <div className="fixed left-0 top-0 z-50 flex h-20 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950/90 px-8 backdrop-blur-sm lg:px-20">
+            <img
+              className="h-12"
+              alt="Logo Lounge Brahma"
+              src="https://loungebrahma.com.br/wp-content/themes/lounge-brahma/assets/images/logo-lounge-brahma-branco.png"
+            />
+
+            <nav className="item-center hidden gap-5 font-semibold text-zinc-100 lg:flex">
+              <Link
+                to="/#proximos-jogos"
+                title="Próximos jogos"
+                className="py-2 transition-all hover:brightness-75"
+              >
+                Próximos jogos
+              </Link>
+
+              <Link
+                to="/galeria"
+                title="Galeria"
+                className="py-2 transition-all hover:brightness-75"
+              >
+                Galeria
+              </Link>
+
+              <Link
+                to="/cadeiras-cativas"
+                title="Cadeira cativa - Camarote Lounge Brahma"
+                className="hidden py-2 transition-all hover:brightness-75 xl:block"
+              >
+                Cadeira cativa - Camarote Lounge Brahma
+              </Link>
+
+              <Link
+                to="/cadeiras-cativas"
+                title="Cadeira cativa"
+                className="block py-2 transition-all hover:brightness-75 xl:hidden"
+              >
+                Cadeira cativa
+              </Link>
+
+              <Link
+                to="/faca-seu-evento"
+                title="Faça seu evento"
+                className="py-2 transition-all hover:brightness-75"
+              >
+                Faça seu evento
+              </Link>
+              <Link
+                to="/perguntas-frequentes"
+                title="Pergutas frequentes"
+                className="py-2 transition-all hover:brightness-75"
+              >
+                FAQ
+              </Link>
+
+              <Button
+                type="button"
+                title="Minha conta"
+                className="bg-brand-gold-500 hover:bg-brand-gold-500 font-semibold text-zinc-700 transition-all hover:brightness-75"
+              >
+                <User className="mr-2 size-4" />
+                Minha conta
+              </Button>
+            </nav>
+
+            <Button
+              type="button"
+              size="icon"
+              title="Clique para abrir o menu lateral"
+            >
+              <Menu className="size-4" />
+            </Button>
           </div>
         )}
       </header>
 
       <section className="relative h-[95vh] overflow-hidden rounded-br-[4rem]">
         {/* Redes sociais */}
-        <div className="absolute right-20 top-1/2 z-20 flex -translate-y-1/2 flex-col justify-center gap-6">
+        <div className="absolute right-20 top-1/2 z-20 hidden -translate-y-1/2 flex-col justify-center gap-6 lg:flex">
           <Link
             to=""
             target="_blank"
@@ -125,18 +242,23 @@ export function HomePage() {
 
         {/* Texto principal da seção */}
         <div className="relative h-full">
-          <div className="absolute left-0 top-0 z-10 flex h-full w-full items-center bg-zinc-950/85 pl-28">
-            <div className="px-20">
-              <h2 className="mt-2 max-w-4xl select-none text-6xl font-extrabold leading-[4rem] tracking-tight text-zinc-200">
+          <div
+            className={cn(
+              'absolute left-0 top-0 z-10 flex h-full w-full items-center bg-zinc-950/85',
+              !hasActiveDesktopHeader ? 'pl-0' : 'pl-20',
+            )}
+          >
+            <div className="px-8 lg:px-20">
+              <h2 className="mt-2 max-w-4xl select-none text-3xl font-extrabold tracking-tight text-zinc-200 sm:text-4xl md:text-5xl xl:text-6xl">
                 Viva a{' '}
-                <strong className="text-red-700">melhor experiência</strong>, no
-                Camarote Lounge Brahma <br /> da{' '}
+                <strong className="text-red-700">melhor experiência</strong>,{' '}
+                <br /> no Camarote Lounge Brahma <br /> da{' '}
                 <strong className="text-brand-gold-500">
                   Neo Química Arena.
                 </strong>
               </h2>
 
-              <h4 className="mt-3 max-w-xl select-none text-2xl font-semibold text-zinc-300">
+              <h4 className="mt-3 max-w-xl select-none text-xl font-semibold text-zinc-300 md:text-2xl">
                 Camarote Open Bar & Open Food com uma vista incrível para os
                 jogos do Corinthians.
               </h4>
@@ -160,20 +282,20 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="relative z-20 -mt-24 flex border-y-2 border-y-zinc-700">
-        <div className="flex min-h-24 flex-1 items-center bg-[url(background.png)] bg-cover bg-center bg-no-repeat py-8 pl-28">
-          <div>
-            <h2 className="text-xl font-semibold tracking-tight text-white">
+      <section className="relative z-20 -mt-24 flex flex-col border-y-2 border-y-zinc-700 xl:flex-row">
+        <div className="flex min-h-24 flex-1 items-center bg-[url(background.png)] bg-cover bg-center bg-no-repeat py-8 pl-8 xl:pl-20">
+          <div className={!hasActiveDesktopHeader ? 'pl-0' : 'pl-20'}>
+            <h2 className="text-md font-semibold tracking-tight text-white">
               Próximo jogo - {nextGamesList[0].date}
             </h2>
 
-            <span className="mt-2 block text-2xl font-bold uppercase text-white">
+            <span className="mt-2 block text-xl font-bold uppercase text-white 2xl:text-2xl">
               {nextGamesList[0].gameTitle}
             </span>
 
             <Button
               type="button"
-              className="bg-brand-gold-500 hover:bg-brand-gold-500 mt-5 text-zinc-900 transition-all hover:brightness-75"
+              className="bg-brand-gold-500 hover:bg-brand-gold-500 mt-5 rounded-none text-zinc-900 transition-all hover:brightness-75"
             >
               <Ticket className="mr-2 size-4" />
               Garanta agora seu ingresso
@@ -181,33 +303,77 @@ export function HomePage() {
           </div>
         </div>
 
-        <div className="flex-[1.8] overflow-hidden bg-zinc-900 p-5 text-white">
+        <div className="flex-[1.8] overflow-hidden bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-zinc-700 via-zinc-900 to-black p-5 text-white">
           <Swiper
             loop
             spaceBetween={20}
-            slidesPerView={3}
+            slidesPerView={1}
             autoplay={{
-              delay: 5000,
+              delay: 8000,
             }}
             modules={[Autoplay]}
+            breakpoints={{
+              1024: {
+                slidesPerView: 2,
+              },
+            }}
           >
-            {nextGamesList.slice(0, 4).map((game, i) => {
+            {nextGamesList.map((game, i) => {
               return (
                 <SwiperSlide key={i}>
-                  <div className="flex-1 overflow-hidden rounded-2xl bg-white shadow-lg">
-                    <img
-                      src={game.thumbail}
-                      alt="Imagem do jogo"
-                      className="pointer-events-none h-40 w-full select-none rounded-t-2xl object-cover"
-                    />
-
-                    <div className="p-4">
+                  <div className="flex-1 overflow-hidden rounded-sm bg-white shadow-lg">
+                    <div
+                      className={cn(
+                        'flex items-center justify-between bg-cover bg-center bg-no-repeat px-10 py-4',
+                        i % 2 === 0
+                          ? 'bg-[url(background-gold.png)]'
+                          : 'bg-[url(background.png)]',
+                      )}
+                    >
                       <div className="flex flex-col items-center justify-center">
-                        <h4 className="font-bold text-zinc-700">{game.date}</h4>
-                        <span className="text-zinc-700">{game.gameTitle}</span>
+                        <img
+                          alt="Escudo do Corinthians"
+                          src="/escudos/corinthians.png"
+                          className="size-24 object-contain"
+                        />
+                        <h2 className="font-semibold">Corinthians</h2>
                       </div>
 
-                      <Button type="button" className="mt-4 w-full bg-zinc-800">
+                      <X className="size-8 font-bold" />
+
+                      <div className="flex flex-col items-center justify-center">
+                        <img
+                          alt="Escudo do Time"
+                          src={game.shieldTime}
+                          className="size-24 object-contain"
+                        />
+                        <h2 className="font-semibold">{game.opponent}</h2>
+                      </div>
+                    </div>
+
+                    <div className="p-4">
+                      <div className="flex flex-col justify-center">
+                        <h4 className="font-bold text-zinc-700">{game.date}</h4>
+                        <div className="flex items-center gap-2">
+                          <span className="text-zinc-700">
+                            {game.startTime}
+                          </span>
+                          <span className="text-zinc-700">
+                            {game.startGameTime}
+                          </span>
+                        </div>
+                      </div>
+
+                      <Button
+                        type="button"
+                        title="Clique para comprar os ingressos"
+                        className={cn(
+                          'text-md mt-4 h-12 w-full rounded-none transition-all hover:brightness-75',
+                          i % 2 === 0
+                            ? 'bg-brand-gold-500 hover:bg-brand-gold-500 text-zinc-700'
+                            : 'bg-red-700 text-white hover:bg-red-700',
+                        )}
+                      >
                         <Ticket className="mr-2 size-4" />
                         Comprar ingressos
                       </Button>
@@ -236,6 +402,7 @@ export function HomePage() {
           </div> */}
         </div>
       </section>
+
       <br />
       <br />
       <br />
