@@ -30,18 +30,18 @@ export function HomePage() {
   }, [])
 
   useEffect(() => {
-    // const handleResize = () => {
-    //   if (window.innerWidth <= 1024) {
-    //     setHasActiveDesktopHeader(false)
-    //   } else {
-    //     setHasActiveDesktopHeader(true)
-    //   }
-    // }
-    // window.addEventListener('resize', handleResize)
-    // handleResize()
-    // return () => {
-    //   window.removeEventListener('resize', handleResize)
-    // }
+    const handleResize = () => {
+      if (window.innerWidth <= 1024) {
+        setHasActiveDesktopHeader(false)
+      } else {
+        setHasActiveDesktopHeader(true)
+      }
+    }
+    window.addEventListener('resize', handleResize)
+    handleResize()
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   return (
@@ -53,6 +53,7 @@ export function HomePage() {
             <div className="p-4">
               <img
                 alt="Logo do Lounge Brahma"
+                className="pointer-events-none select-none"
                 src="https://loungebrahma.com.br/wp-content/themes/lounge-brahma/assets/images/logo-lounge-brahma-branco.png"
               />
             </div>
@@ -140,71 +141,75 @@ export function HomePage() {
               src="https://loungebrahma.com.br/wp-content/themes/lounge-brahma/assets/images/logo-lounge-brahma-branco.png"
             />
 
-            <nav className="item-center hidden gap-5 font-semibold text-zinc-100 lg:flex">
-              <Link
-                to="/#proximos-jogos"
-                title="Próximos jogos"
-                className="py-2 transition-all hover:brightness-75"
-              >
-                Próximos jogos
-              </Link>
+            <div className="flex items-center gap-6">
+              <nav className="item-center hidden gap-5 font-semibold text-zinc-100 lg:flex">
+                <Link
+                  to="/#proximos-jogos"
+                  title="Próximos jogos"
+                  className="py-2 transition-all hover:brightness-75"
+                >
+                  Próximos jogos
+                </Link>
 
-              <Link
-                to="/galeria"
-                title="Galeria"
-                className="py-2 transition-all hover:brightness-75"
-              >
-                Galeria
-              </Link>
+                <Link
+                  to="/galeria"
+                  title="Galeria"
+                  className="py-2 transition-all hover:brightness-75"
+                >
+                  Galeria
+                </Link>
 
-              <Link
-                to="/cadeiras-cativas"
-                title="Cadeira cativa - Camarote Lounge Brahma"
-                className="hidden py-2 transition-all hover:brightness-75 xl:block"
-              >
-                Cadeira cativa - Camarote Lounge Brahma
-              </Link>
+                <Link
+                  to="/cadeiras-cativas"
+                  title="Cadeira cativa - Camarote Lounge Brahma"
+                  className="hidden py-2 transition-all hover:brightness-75 xl:block"
+                >
+                  Cadeira cativa - Camarote Lounge Brahma
+                </Link>
 
-              <Link
-                to="/cadeiras-cativas"
-                title="Cadeira cativa"
-                className="block py-2 transition-all hover:brightness-75 xl:hidden"
-              >
-                Cadeira cativa
-              </Link>
+                <Link
+                  to="/cadeiras-cativas"
+                  title="Cadeira cativa"
+                  className="block py-2 transition-all hover:brightness-75 xl:hidden"
+                >
+                  Cadeira cativa
+                </Link>
 
-              <Link
-                to="/faca-seu-evento"
-                title="Faça seu evento"
-                className="py-2 transition-all hover:brightness-75"
-              >
-                Faça seu evento
-              </Link>
-              <Link
-                to="/perguntas-frequentes"
-                title="Pergutas frequentes"
-                className="py-2 transition-all hover:brightness-75"
-              >
-                FAQ
-              </Link>
+                <Link
+                  to="/faca-seu-evento"
+                  title="Faça seu evento"
+                  className="py-2 transition-all hover:brightness-75"
+                >
+                  Faça seu evento
+                </Link>
+                <Link
+                  to="/perguntas-frequentes"
+                  title="Pergutas frequentes"
+                  className="py-2 transition-all hover:brightness-75"
+                >
+                  FAQ
+                </Link>
+              </nav>
 
-              <Button
-                type="button"
-                title="Minha conta"
-                className="bg-brand-gold-500 hover:bg-brand-gold-500 font-semibold text-zinc-700 transition-all hover:brightness-75"
-              >
-                <User className="mr-2 size-4" />
-                Minha conta
-              </Button>
-            </nav>
+              <div className="flex items-center gap-3">
+                <Button
+                  type="button"
+                  title="Minha conta"
+                  className="bg-brand-gold-500 hover:bg-brand-gold-500 font-semibold text-zinc-700 transition-all hover:brightness-75"
+                >
+                  <User className="mr-2 size-4" />
+                  Minha conta
+                </Button>
 
-            <Button
-              type="button"
-              size="icon"
-              title="Clique para abrir o menu lateral"
-            >
-              <Menu className="size-4" />
-            </Button>
+                <Button
+                  type="button"
+                  size="icon"
+                  title="Clique para abrir o menu lateral"
+                >
+                  <Menu className="size-5" />
+                </Button>
+              </div>
+            </div>
           </div>
         )}
       </header>
@@ -249,7 +254,36 @@ export function HomePage() {
             )}
           >
             <div className="px-8 lg:px-20">
-              <h2 className="mt-2 max-w-4xl select-none text-3xl font-extrabold tracking-tight text-zinc-200 sm:text-4xl md:text-5xl xl:text-6xl">
+              <div className="flex flex-row gap-4 lg:hidden">
+                <Link
+                  to=""
+                  target="_blank"
+                  title="Clique para visitar nosso Instagram"
+                  className="flex size-10 items-center justify-center rounded-full border text-zinc-100 transition-all hover:bg-red-600 hover:text-white hover:brightness-75"
+                >
+                  <PiInstagramLogoThin className="size-6" />
+                </Link>
+
+                <Link
+                  to=""
+                  target="_blank"
+                  title="Clique para visitar nosso Facebook"
+                  className="hover:bg-brand-gold-500 flex size-10 items-center justify-center rounded-full border text-zinc-300 transition-all hover:text-white hover:brightness-75"
+                >
+                  <FaFacebookF className="size-5" />
+                </Link>
+
+                <Link
+                  to=""
+                  target="_blank"
+                  title="Clique para visitar nosso Youtube"
+                  className="flex size-10 items-center justify-center rounded-full border text-zinc-300 transition-all hover:bg-red-600 hover:text-white hover:brightness-75"
+                >
+                  <FaYoutube className="size-5" />
+                </Link>
+              </div>
+
+              <h2 className="mt-5 max-w-4xl select-none text-3xl font-extrabold tracking-tight text-zinc-200 sm:text-4xl md:text-5xl xl:text-6xl">
                 Viva a{' '}
                 <strong className="text-red-700">melhor experiência</strong>,{' '}
                 <br /> no Camarote Lounge Brahma <br /> da{' '}
@@ -303,7 +337,7 @@ export function HomePage() {
           </div>
         </div>
 
-        <div className="flex-[1.8] overflow-hidden bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-zinc-700 via-zinc-900 to-black p-5 text-white">
+        <div className="flex-[1.8] overflow-hidden bg-zinc-800 p-5 text-white">
           <Swiper
             loop
             spaceBetween={20}
