@@ -52,7 +52,7 @@ export const nextGamesList: Game[] = [
     gameTitle: 'Corinthians x São Bernardo FC',
     slug: 'corinthians-x-sao-bernardo-fc',
     shieldTime: '/escudos/sao-bernardo-fc.png',
-    opponent: 'São Bernardo FC',
+    opponent: 'São Bernardo',
   },
   {
     date: 'Quarta-feira - 12/02/2025',

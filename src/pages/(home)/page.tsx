@@ -1,5 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { HeartHandshake, Menu, Mouse, Ticket, User, X } from 'lucide-react'
+import {
+  HeartHandshake,
+  Loader2,
+  Menu,
+  Mouse,
+  Ticket,
+  User,
+  X,
+} from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { FaFacebookF, FaRegImages, FaYoutube } from 'react-icons/fa'
 import { GrFormPrevious } from 'react-icons/gr'
@@ -11,7 +19,7 @@ import {
   MdOutlineEmojiEvents,
 } from 'react-icons/md'
 import { PiInstagramLogoThin } from 'react-icons/pi'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Autoplay, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -23,6 +31,8 @@ import { Sheet, SheetContent, SheetTrigger } from '../../components/ui/sheet'
 
 export function HomePage() {
   const [hasActiveDesktopHeader, setHasActiveDesktopHeader] = useState(false)
+  const [hasActiveLoaderInitial, setHasActiveLoaderInitial] = useState(false)
+  const navigate = useNavigate()
 
   const handleScrollClick = () => {
     window.scroll({
@@ -32,6 +42,10 @@ export function HomePage() {
   }
 
   useEffect(() => {
+    setTimeout(() => {
+      setHasActiveLoaderInitial(false)
+    }, 2000)
+
     window.addEventListener('scroll', () => {
       if (window.scrollY <= 50) {
         if (window.innerWidth >= 1024) {
@@ -60,10 +74,22 @@ export function HomePage() {
 
   return (
     <main>
-      <header className="z-50">
+      {/* Carregamento inicial */}
+      <div
+        className={cn(
+          'fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-zinc-900 transition-all',
+          hasActiveLoaderInitial
+            ? 'visible opacity-100'
+            : 'invisible opacity-0',
+        )}
+      >
+        <Loader2 className="size-20 animate-spin text-white" />
+      </div>
+
+      <header className="z-40">
         {/* Sidebar */}
         {hasActiveDesktopHeader && (
-          <aside className="fixed left-0 top-0 z-50 h-full w-28 rounded-br-2xl border-b-4 border-r-4 border-zinc-800 bg-zinc-950/80 py-10">
+          <aside className="fixed left-0 top-0 z-40 w-28 rounded-br-2xl border-b-4 border-r-4 border-zinc-800 bg-zinc-950/80 py-10">
             <div className="px-4 py-2">
               <img
                 alt="Logo do Lounge Brahma"
@@ -126,7 +152,7 @@ export function HomePage() {
 
         {/* Menu minha conta */}
         {hasActiveDesktopHeader && (
-          <div className="fixed right-20 top-0 z-50 flex overflow-hidden rounded-b-md bg-zinc-950/90 text-zinc-200">
+          <div className="fixed right-20 top-0 z-40 flex overflow-hidden rounded-b-md bg-zinc-950/90 text-zinc-200">
             <div className="bg-white">
               <img
                 src="/escudos/corinthians.png"
@@ -149,7 +175,7 @@ export function HomePage() {
 
         {/* Menu alternativa + Mobile */}
         {!hasActiveDesktopHeader && (
-          <div className="fixed left-0 top-0 z-50 flex h-20 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950/90 px-8 backdrop-blur-sm lg:px-20">
+          <div className="fixed left-0 top-0 z-40 flex h-20 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950/90 px-8 backdrop-blur-sm lg:px-20">
             <img
               className="h-12"
               alt="Logo Lounge Brahma"
@@ -342,7 +368,7 @@ export function HomePage() {
         )}
       </header>
 
-      <section className="relative h-[95vh] overflow-hidden rounded-br-[4rem]">
+      <section className="relative h-[93vh] overflow-hidden rounded-br-[4rem]">
         {/* Redes sociais */}
         <div className="absolute right-20 top-1/2 z-20 hidden -translate-y-1/2 flex-col justify-center gap-6 lg:flex">
           <Reveal>
@@ -383,7 +409,7 @@ export function HomePage() {
         <div className="relative h-full">
           <div
             className={cn(
-              'absolute left-0 top-0 z-10 flex h-full w-full items-center bg-zinc-950/85',
+              'absolute left-0 top-0 z-10 flex h-full w-full items-center bg-gradient-to-t from-zinc-950 via-zinc-950/90 to-zinc-950/70',
               !hasActiveDesktopHeader ? 'pl-0' : 'pl-20',
             )}
           >
@@ -427,7 +453,7 @@ export function HomePage() {
               </Reveal>
 
               <Reveal>
-                <h2 className="text-shadow-xl mt-5 max-w-4xl select-none text-3xl font-extrabold tracking-tight text-zinc-200 sm:text-4xl md:text-5xl xl:text-6xl">
+                <h2 className="text-shadow-xl mt-5 max-w-4xl select-none text-2xl font-extrabold uppercase tracking-tight text-zinc-200 sm:text-3xl md:text-4xl xl:text-5xl">
                   Viva a{' '}
                   <strong className="text-red-600">melhor experiência</strong>
                   , <br /> no Camarote Lounge Brahma <br /> da{' '}
@@ -457,17 +483,15 @@ export function HomePage() {
             </div>
           </div>
 
-          <video
-            loop
-            muted
-            autoPlay
-            src="/video.mp4"
+          <img
+            alt="Imagem do Lounge Brahma"
             className="pointer-events-none h-full w-full select-none object-cover"
+            src="https://static.athletico.com.br/wp-content/uploads/2024/10/05110457/ChoperiaArenaBrahma-1200.jpg"
           />
         </div>
       </section>
 
-      <section className="relative z-20 -mt-24 flex flex-col border-y-2 border-y-zinc-700 xl:flex-row">
+      <section className="relative z-20 -mt-24 flex flex-col border-b-2 border-y-zinc-700 xl:flex-row">
         <div className="flex min-h-24 flex-1 items-center bg-[url(background.png)] bg-cover bg-center bg-no-repeat py-8 pl-8 lg:items-start xl:pl-20">
           <div
             className={cn(
@@ -512,6 +536,7 @@ export function HomePage() {
             <Reveal>
               <Button
                 type="button"
+                onClick={() => navigate(`/ingressos/${nextGamesList[0].slug}`)}
                 className="mt-5 rounded-none bg-gradient-to-r from-yellow-400 to-yellow-600 text-zinc-900 transition-all hover:brightness-75"
               >
                 <Ticket className="mr-2 size-4" />
@@ -521,7 +546,7 @@ export function HomePage() {
           </div>
         </div>
 
-        <div className="flex-[1.8] overflow-hidden bg-zinc-900 bg-[url(/background-cards.png)] bg-cover bg-center bg-no-repeat p-5 text-white">
+        <div className="flex-[1.8] overflow-hidden bg-zinc-950 bg-cover bg-center bg-no-repeat p-5 text-white">
           <div className="mb-4 flex items-center justify-between">
             <Reveal>
               <span className="pointer-events-none select-none rounded-full bg-red-700 px-3 py-1 text-white">
@@ -553,6 +578,9 @@ export function HomePage() {
             loop
             spaceBetween={20}
             slidesPerView={1}
+            pagination={{
+              clickable: true,
+            }}
             navigation={{
               nextEl: '.button-next-slide',
               prevEl: '.button-prev-slide',
@@ -619,6 +647,7 @@ export function HomePage() {
                         <Button
                           type="button"
                           title="Clique para comprar os ingressos"
+                          onClick={() => navigate(`/ingressos/${game.slug}`)}
                           className={cn(
                             'text-md mt-4 h-12 w-full rounded-none transition-all hover:brightness-75',
                             i % 2 === 0
@@ -637,10 +666,6 @@ export function HomePage() {
             })}
           </Swiper>
         </div>
-      </section>
-
-      <section className="">
-        <div className="bg-white px-20 py-14">daw</div>
       </section>
     </main>
   )

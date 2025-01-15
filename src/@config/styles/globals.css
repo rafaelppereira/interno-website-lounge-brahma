@@ -80,7 +80,11 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-zinc-600
+    @apply bg-zinc-700
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-zinc-950
   }
 
   .container {

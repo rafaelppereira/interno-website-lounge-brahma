@@ -3,11 +3,16 @@
 import { createBrowserRouter } from 'react-router-dom'
 
 import { HomePage } from '../pages/(home)/page'
+import { TicketPage } from '../pages/(tickets)/page'
 
 const router: any = createBrowserRouter([
   {
     path: '',
     element: <HomePage />,
+  },
+  {
+    path: '/ingressos/:slug',
+    element: <TicketPage />,
   },
 ])
 
