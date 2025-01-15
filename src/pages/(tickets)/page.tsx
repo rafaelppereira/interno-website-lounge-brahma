@@ -11,6 +11,7 @@ import { Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { Game, nextGamesList } from '../../@config/utils/next-games-list'
+import { Footer } from '../../components/footer'
 import { Reveal } from '../../components/reveal'
 import { Button } from '../../components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '../../components/ui/sheet'
@@ -22,14 +23,14 @@ export function TicketPage() {
   )
 
   useEffect(() => {
-    // window.scroll({
-    //   top: 0,
-    //   behavior: 'smooth',
-    // })
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    })
   }, [])
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-zinc-100">
+    <main className="min-h-screen text-zinc-100">
       <header className="z-40">
         {/* Menu alternativa + Mobile */}
         <div className="fixed left-0 top-0 z-40 flex h-20 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950/90 px-8 backdrop-blur-sm lg:px-20">
@@ -323,9 +324,9 @@ export function TicketPage() {
         </div>
       </section>
 
-      <section className="bg-zinc-950 px-8 lg:px-20">
+      <section className="rounded-br-[5rem] bg-zinc-950 px-8 pb-14 pt-5 lg:px-20">
         <Reveal>
-          <div className="mt-5 flex justify-center">
+          <div className="flex justify-center">
             <div className="flex items-start gap-3">
               <HiOutlineTicket className="relative top-1 size-5" />
               <h2 className="max-w-lg">
@@ -729,53 +730,63 @@ export function TicketPage() {
         </div>
       </section>
 
-      <section className="flex flex-col items-start gap-10 px-8 py-14 lg:flex-row lg:px-20 xl:items-center">
-        <div className="flex-1">
-          <img
-            alt="Imagem do Lounge Brahma"
-            className="pointer-events-none w-full select-none rounded-sm border-4 border-zinc-800"
-            src="https://static.corinthians.com.br/img/arena/brahma-lounge/brahma-lounge-hospitalidade-2.jpg"
-          />
+      <section className="flex flex-col items-start gap-10 bg-zinc-50 px-8 py-14 lg:flex-row lg:px-20 xl:items-center">
+        <div className="flex-1 overflow-hidden">
+          <Reveal>
+            <img
+              alt="Imagem do Lounge Brahma"
+              className="w-full select-none rounded-sm border-4 border-zinc-200 transition-all duration-500 hover:scale-105"
+              src="https://static.corinthians.com.br/img/arena/brahma-lounge/brahma-lounge-hospitalidade-2.jpg"
+            />
+          </Reveal>
         </div>
         <div className="flex-[1.8] xl:flex-1">
-          <h2 className="text-lg font-semibold text-red-500">
-            A CREMOSIDADE BRAHMA E A LOUCURA CORINTHIANA <br /> JUNTAS NO MELHOR
-            LUGAR DA NEO QUÍMICA ARENA
-          </h2>
-          <p className="mt-2">
-            No Camarote Lounge Brahma, localizado no 8º andar Neo Química Arena,
-            você tem a melhor visão do jogo e a disponibilização de serviços
-            exclusivos e premium.
-            <br />
-            <br />
-            O Camarote conta com área de descanso, banheiros exclusivos e
-            sistema de atendimento diferenciado para os torcedores mais VIPs do
-            bando de loucos!
-            <br />
-            <br />
-            Venha curtir a vitória do Timão e comemorar com os amigos
-            desfrutando do chopp mais cremoso, gelado, de sabor único, não
-            pasteurizado, feito com ingredientes de qualidade e mais de 130 anos
-            de tradição.
-            <br />
-            <br />
-            Chopp Brahma. Chopp de verdade!
-          </p>
+          <Reveal>
+            <h2 className="text-md font-extrabold text-red-700 md:text-xl">
+              A CREMOSIDADE BRAHMA E A LOUCURA CORINTHIANA JUNTAS NO MELHOR
+              LUGAR DA NEO QUÍMICA ARENA
+            </h2>
+          </Reveal>
+
+          <Reveal>
+            <p className="mt-4 text-lg text-zinc-700">
+              No Camarote Lounge Brahma, localizado no 8º andar Neo Química
+              Arena, você tem a melhor visão do jogo e a disponibilização de
+              serviços exclusivos e premium.
+              <br />
+              <br />
+              O Camarote conta com área de descanso, banheiros exclusivos e
+              sistema de atendimento diferenciado para os torcedores mais VIPs
+              do bando de loucos!
+              <br />
+              <br />
+              Venha curtir a vitória do Timão e comemorar com os amigos
+              desfrutando do chopp mais cremoso, gelado, de sabor único, não
+              pasteurizado, feito com ingredientes de qualidade e mais de 130
+              anos de tradição.
+              <br />
+              <br />
+              Chopp Brahma. Chopp de verdade!
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      <section className="bg-zinc-900 px-8 py-14 lg:px-20">
+      <section className="rounded-tl-[5rem] bg-zinc-900 px-8 py-14 lg:px-20">
         <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-2xl font-bold uppercase">
           Como chegar na arena
         </h2>{' '}
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.6437214071066!2d-46.476809488786905!3d-23.54531337872251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce66dec98fb855%3A0xf2b061ffbcd2ecf8!2sNeo%20Qu%C3%ADmica%20Arena!5e0!3m2!1spt-BR!2sbr!4v1736974441012!5m2!1spt-BR!2sbr"
           width="100%"
           height="450"
           loading="lazy"
+          className="rounded-sm"
           referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.6437214071066!2d-46.476809488786905!3d-23.54531337872251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce66dec98fb855%3A0xf2b061ffbcd2ecf8!2sNeo%20Qu%C3%ADmica%20Arena!5e0!3m2!1spt-BR!2sbr!4v1736974441012!5m2!1spt-BR!2sbr"
+        />
       </section>
+
+      <Footer />
     </main>
   )
 }

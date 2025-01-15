@@ -24,10 +24,123 @@ import { Autoplay, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { cn } from '../../@config/lib/cn'
-import { nextGamesList } from '../../@config/utils/next-games-list'
+import { Game, nextGamesList } from '../../@config/utils/next-games-list'
+import { Footer } from '../../components/footer'
 import { Reveal } from '../../components/reveal'
 import { Button } from '../../components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '../../components/ui/sheet'
+
+function GamesByMonth() {
+  const gamesGroupedByMonth = nextGamesList.reduce(
+    (acc, game) => {
+      const [, , date] = game.date.split(' ')
+      const [, month, year] = date.split('/')
+      const key = `${month}/${year}`
+
+      if (!acc[key]) acc[key] = []
+      acc[key].push(game)
+
+      return acc
+    },
+    {} as Record<string, Game[]>,
+  )
+
+  const sortedKeys = Object.keys(gamesGroupedByMonth).sort((a, b) => {
+    const [monthA, yearA] = a.split('/').map(Number)
+    const [monthB, yearB] = b.split('/').map(Number)
+    return yearA - yearB || monthA - monthB
+  })
+
+  return (
+    <div>
+      {sortedKeys.map((key) => {
+        const games = gamesGroupedByMonth[key]
+        const [month, year] = key.split('/')
+        const monthName = new Date(
+          Number(year),
+          Number(month) - 1,
+        ).toLocaleString('pt-BR', { month: 'long' })
+
+        return (
+          <div key={key} className="flex flex-col items-start gap-4">
+            <h2 className="mb-4 mt-5 text-2xl font-bold uppercase tracking-tighter text-zinc-800">
+              {monthName} {year}
+            </h2>
+            <div className="flex w-full flex-col gap-6">
+              {games.map((game) => (
+                <div
+                  key={game.slug}
+                  className="flex w-full items-center justify-between border-b border-zinc-300 pb-4"
+                >
+                  {/* LEFT */}
+                  <div className="flex flex-1 items-center">
+                    <div className="flex flex-col items-start border-r border-zinc-300 md:w-40">
+                      <h3 className="font-semibold text-zinc-600">
+                        {game.date.split(' ')[0]}{' '}
+                        {game.date.split(' ')[2].split('/')[0]}/
+                        {game.date.split(' ')[2].split('/')[1]}
+                      </h3>
+                      <p className="bg-gradient-to-r from-[#cd122d] to-[#154284] bg-clip-text px-4 text-sm font-semibold text-transparent">
+                        {game.startGameTime.split(': ')[1]}
+                      </p>
+                    </div>
+                    <div className="flex items-center border-r border-zinc-300 px-4">
+                      <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe1oPV1qsi5eo5xaYAqjaszaR1yAmwPLRRNA&s"
+                        alt="Logo Paulistão"
+                        width={90}
+                        className="rounded-md object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  {/* CENTER */}
+                  {/* <div className="flex-1"> */}
+                  <div className="flex flex-1 items-center">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src="/escudos/corinthians.png"
+                        width={60}
+                        className="object-contain"
+                        alt="Escudo Corinthians"
+                      />
+                      <h2 className="whitespace-nowrap text-left font-semibold">
+                        Corinthians FC
+                      </h2>
+                    </div>
+                    <p className="bg-gradient-to-r from-red-600 to-yellow-600 bg-clip-text px-4 text-xl font-extrabold text-transparent">
+                      vs.
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={game.shieldTime}
+                        width={50}
+                        className="object-cover"
+                        alt={`Escudo ${game.opponent}`}
+                      />
+                      <h2 className="whitespace-nowrap text-left font-semibold">
+                        {game.opponent}
+                      </h2>
+                    </div>
+                  </div>
+                  {/* </div> */}
+
+                  {/* RIGHT */}
+                  <div className="flex flex-1 items-center justify-end gap-2">
+                    <button className="bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 px-4 py-2 font-medium text-white hover:via-yellow-600 hover:to-yellow-600">
+                      Comprar ingressos
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="h-2 w-full bg-gradient-to-r from-red-600 from-45% via-yellow-600 via-55% to-yellow-600" />
+          </div>
+        )
+      })}
+    </div>
+  )
+}
 
 export function HomePage() {
   const [hasActiveDesktopHeader, setHasActiveDesktopHeader] = useState(false)
@@ -617,7 +730,9 @@ export function HomePage() {
                           <h2 className="font-semibold">Corinthians</h2>
                         </div>
 
-                        <X className="size-8 font-bold" />
+                        <p className="px-4 text-xl font-extrabold text-transparent text-white">
+                          vs.
+                        </p>
 
                         <div className="flex flex-col items-center justify-center">
                           <img
@@ -667,6 +782,12 @@ export function HomePage() {
           </Swiper>
         </div>
       </section>
+
+      <section className="px-20 py-10">
+        <GamesByMonth />
+      </section>
+
+      <Footer />
     </main>
   )
 }
