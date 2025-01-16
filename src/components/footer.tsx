@@ -182,9 +182,13 @@ export function Footer() {
         reservados
         <span className="ml-1">
           - Desenvolvido por{' '}
-          <Link to="" target="_blank" className="underline underline-offset-2">
+          <Link
+            to="https://systemframe.com.br/"
+            target="_blank"
+            className="underline underline-offset-2"
+          >
             {' '}
-            RP Desenvolvimentos
+            Powered by System Frame
           </Link>
         </span>
       </div>
