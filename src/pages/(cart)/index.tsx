@@ -1,4 +1,5 @@
 import { Menu, Minus, Plus, QrCode, User } from 'lucide-react'
+import { useEffect } from 'react'
 import { FaFacebookF, FaRegImages, FaYoutube } from 'react-icons/fa'
 import { HiOutlineTicket } from 'react-icons/hi2'
 import { IoHelpCircleOutline } from 'react-icons/io5'
@@ -9,12 +10,20 @@ import { Autoplay, EffectCards } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { cn } from '../../@config/lib/cn'
+import { Reveal } from '../../components/reveal'
 import { StepCheckoutForm } from '../../components/step-checkout-form'
 import { Button } from '../../components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '../../components/ui/sheet'
 
 export function CartPage() {
   const { hash } = useLocation()
+
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }, [])
 
   return (
     <main className="overflow-x-hidden">
@@ -526,7 +535,9 @@ export function CartPage() {
         </div>
 
         <div className="w-full flex-1">
-          <StepCheckoutForm />
+          <Reveal>
+            <StepCheckoutForm />
+          </Reveal>
         </div>
       </section>
     </main>
