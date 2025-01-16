@@ -324,7 +324,7 @@ export function TicketPage() {
         </div>
       </section>
 
-      <section className="rounded-br-[5rem] bg-zinc-950 px-8 pb-14 pt-5 lg:px-20">
+      <section className="rounded-br-[3rem] bg-zinc-950 px-8 pb-14 pt-5 md:rounded-br-[5rem] lg:px-20">
         <Reveal>
           <div className="flex justify-center">
             <div className="flex items-start gap-3">
@@ -772,7 +772,7 @@ export function TicketPage() {
         </div>
       </section>
 
-      <section className="rounded-tl-[5rem] bg-zinc-900 px-8 py-14 lg:px-20">
+      <section className="rounded-tl-[3rem] bg-zinc-900 px-8 py-14 md:rounded-tl-[5rem] lg:px-20">
         <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-2xl font-bold uppercase text-zinc-200">
           Como chegar na arena
         </h2>{' '}

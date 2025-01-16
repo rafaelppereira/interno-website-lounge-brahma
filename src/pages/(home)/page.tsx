@@ -35,7 +35,12 @@ import {
 } from '../../components/ui/accordion'
 import { Button } from '../../components/ui/button'
 import { FocusCardsSlug } from '../../components/ui/focus-card'
-import { Sheet, SheetContent, SheetTrigger } from '../../components/ui/sheet'
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from '../../components/ui/sheet'
 
 export function HomePage() {
   const refNextGames: any = useRef(null)
@@ -88,12 +93,12 @@ export function HomePage() {
   }, [])
 
   useEffect(() => {
-    // if (!hash) {
-    //   window.scroll({
-    //     top: 0,
-    //     behavior: 'smooth',
-    //   })
-    // }
+    if (!hash) {
+      window.scroll({
+        top: 0,
+        behavior: 'smooth',
+      })
+    }
 
     if (hash === '#proximos-jogos') {
       window.scroll({
@@ -378,41 +383,49 @@ export function HomePage() {
                     </div>
 
                     <nav className="mt-4 flex flex-col gap-3 text-zinc-200">
-                      <Link
-                        to="/#proximos-jogos"
-                        title="Próximos jogos"
-                        className="flex items-center gap-3 rounded-sm bg-zinc-900 px-4 py-3 transition-all hover:brightness-75"
-                      >
-                        <HiOutlineTicket className="size-6" />
-                        Próximos jogos
-                      </Link>
+                      <SheetClose asChild>
+                        <Link
+                          to="/#proximos-jogos"
+                          title="Próximos jogos"
+                          className="flex items-center gap-3 rounded-sm bg-zinc-900 px-4 py-3 transition-all hover:brightness-75"
+                        >
+                          <HiOutlineTicket className="size-6" />
+                          Próximos jogos
+                        </Link>
+                      </SheetClose>
 
-                      <Link
-                        to="/galeria"
-                        title="Galeria"
-                        className="flex items-center gap-4 rounded-sm bg-zinc-900 px-4 py-3 transition-all hover:brightness-75"
-                      >
-                        <FaRegImages className="size-5" />
-                        Galeria
-                      </Link>
+                      <SheetClose asChild>
+                        <Link
+                          to="/#galeria"
+                          title="Galeria"
+                          className="flex items-center gap-4 rounded-sm bg-zinc-900 px-4 py-3 transition-all hover:brightness-75"
+                        >
+                          <FaRegImages className="size-5" />
+                          Galeria
+                        </Link>
+                      </SheetClose>
 
-                      <Link
-                        to="/#faca-seu-evento"
-                        title="Faça seu evento"
-                        className="flex items-center gap-4 rounded-sm bg-zinc-900 px-4 py-3 transition-all hover:brightness-75"
-                      >
-                        <MdOutlineEmojiEvents className="size-5" />
-                        Faça seu evento
-                      </Link>
+                      <SheetClose asChild>
+                        <Link
+                          to="/#faca-seu-evento"
+                          title="Faça seu evento"
+                          className="flex items-center gap-4 rounded-sm bg-zinc-900 px-4 py-3 transition-all hover:brightness-75"
+                        >
+                          <MdOutlineEmojiEvents className="size-5" />
+                          Faça seu evento
+                        </Link>
+                      </SheetClose>
 
-                      <Link
-                        to="/perguntas-frequentes"
-                        title="Pergutas frequentes"
-                        className="flex items-center gap-4 rounded-sm bg-zinc-900 px-4 py-3 transition-all hover:brightness-75"
-                      >
-                        <IoHelpCircleOutline className="size-5" />
-                        Perguntas frequentes
-                      </Link>
+                      <SheetClose asChild>
+                        <Link
+                          to="/#perguntas-frequentes"
+                          title="Pergutas frequentes"
+                          className="flex items-center gap-4 rounded-sm bg-zinc-900 px-4 py-3 transition-all hover:brightness-75"
+                        >
+                          <IoHelpCircleOutline className="size-5" />
+                          Perguntas frequentes
+                        </Link>
+                      </SheetClose>
                     </nav>
 
                     <div className="my-7 flex flex-row gap-3">
@@ -653,7 +666,7 @@ export function HomePage() {
 
         <div className="flex-[1.8] overflow-hidden bg-zinc-950 bg-cover bg-center bg-no-repeat px-8 py-5 text-white xl:px-5">
           <div className="mb-4 flex items-center justify-between">
-            <Reveal>
+            <Reveal classes="hidden md:block">
               <span className="pointer-events-none select-none rounded-sm bg-red-700 px-3 py-1 text-white">
                 {nextGamesList.length} jogos disponíveis para compra
               </span>
@@ -902,7 +915,12 @@ export function HomePage() {
                               <h2 className="text-sm font-bold text-zinc-700">
                                 {game.date.split('-')[1].trim()}
                               </h2>
-                              <span>{game.startGameTime}</span>
+                              <span className="hidden md:block">
+                                {game.startGameTime}
+                              </span>
+                              <span className="block md:hidden">
+                                {game.startGameTime.replace('Jogo:', '').trim()}
+                              </span>
                             </div>
 
                             <div className="flex flex-col items-center">
@@ -920,8 +938,8 @@ export function HomePage() {
                               </h2>
                             </div>
                           </div>
-                          <div className="mt-3 flex items-start gap-2">
-                            <div className="flex w-full flex-col items-center gap-2">
+                          <div className="mt-4 flex flex-col items-start gap-2 md:flex-row">
+                            <div className="flex w-full flex-col-reverse items-center gap-2 md:flex-col">
                               <Button
                                 type="button"
                                 title="Clique para comprar os ingressos"
@@ -929,7 +947,7 @@ export function HomePage() {
                                   navigate(`/ingressos/${game.slug}`)
                                 }
                                 className={
-                                  'mt-4 h-10 w-full rounded-none bg-gradient-to-r from-yellow-400 to-yellow-600 text-sm text-zinc-700 transition-all hover:brightness-75'
+                                  'h-10 w-full rounded-none bg-gradient-to-r from-yellow-400 to-yellow-600 text-sm text-zinc-700 transition-all hover:brightness-75'
                                 }
                               >
                                 <Ticket className="mr-2 size-4" />
@@ -946,7 +964,7 @@ export function HomePage() {
                                 type="button"
                                 title="Clique para comprar os ingressos"
                                 className={
-                                  'mt-4 flex h-10 w-full rounded-none border-2 border-zinc-300 bg-transparent text-sm text-zinc-700 transition-all hover:brightness-75'
+                                  'flex h-10 w-full rounded-none border-2 border-zinc-300 bg-transparent text-sm text-zinc-700 transition-all hover:brightness-75'
                                 }
                               >
                                 <Mail className="mr-2 size-4" />
@@ -969,7 +987,7 @@ export function HomePage() {
       {/* Galeria de fotos */}
       <section
         ref={refGalery}
-        className="rounded-br-[5rem] rounded-tl-[5rem] bg-zinc-900 px-8 py-14 lg:px-20"
+        className="rounded-br-[3rem] rounded-tl-[3rem] bg-zinc-900 px-8 py-14 md:rounded-br-[5rem] md:rounded-tl-[5rem] lg:px-20"
       >
         <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-2xl font-bold uppercase text-zinc-200">
           Galeria de fotos
@@ -981,10 +999,10 @@ export function HomePage() {
       {/* Faça seu evento */}
       <section
         ref={refEvent}
-        className="flex flex-col-reverse items-start gap-10 rounded-bl-[5rem] bg-zinc-50 px-8 py-14 lg:flex-row lg:px-20 xl:items-center"
+        className="flex flex-col-reverse items-start gap-10 rounded-bl-[3rem] bg-zinc-50 px-8 py-14 md:rounded-bl-[5rem] lg:flex-row lg:px-20 xl:items-center"
       >
-        <div className="flex-1 overflow-hidden">
-          <Reveal>
+        <div className="w-full flex-1 overflow-hidden">
+          <Reveal classes="w-full">
             <img
               alt="Imagem do Lounge Brahma"
               className="w-full select-none rounded-sm border-4 border-zinc-200 transition-all duration-500 hover:scale-105"
@@ -1184,7 +1202,7 @@ export function HomePage() {
       </section>
 
       {/* Como chegar na arena */}
-      <section className="rounded-tl-[5rem] bg-zinc-900 px-8 py-14 lg:px-20">
+      <section className="rounded-tl-[3rem] bg-zinc-900 px-8 py-14 md:rounded-tl-[5rem] lg:px-20">
         <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-2xl font-bold uppercase text-zinc-200">
           Como chegar na arena
         </h2>{' '}

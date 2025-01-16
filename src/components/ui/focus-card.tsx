@@ -53,6 +53,7 @@ type Card = {
   title: string
   src: string
   slug: string
+  subtitle: string
 }
 
 export function FocusCardsSlug({ cards }: { cards: Card[] }) {
@@ -69,6 +70,15 @@ export function FocusCardsSlug({ cards }: { cards: Card[] }) {
             hovered={hovered}
             setHovered={setHovered}
           />
+
+          <div className="mt-2 block lg:hidden">
+            <div className="bg-gradient-to-b from-neutral-50 to-neutral-200 bg-clip-text text-xl font-bold text-transparent md:text-2xl">
+              {card.title}
+            </div>
+            <div className="bg-gradient-to-b from-neutral-50 to-neutral-200 bg-clip-text text-sm font-semibold text-transparent">
+              {card.subtitle}
+            </div>
+          </div>
         </Reveal>
       ))}
     </div>
