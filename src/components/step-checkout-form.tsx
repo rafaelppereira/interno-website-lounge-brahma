@@ -272,7 +272,7 @@ export function StepCheckoutForm() {
         {renderStepContent()}
 
         {/* Navigation Buttons */}
-        <div className="mt-8 flex justify-between">
+        <div className="mt-8 flex flex-col justify-between gap-3 md:flex-row md:gap-0">
           {currentStep > 1 && (
             <button
               onClick={handlePrevStep}
@@ -287,7 +287,7 @@ export function StepCheckoutForm() {
                 ? () => alert('Compra finalizada!')
                 : handleNextStep
             }
-            className="ml-auto rounded-md bg-red-700 px-4 py-2 text-white hover:bg-red-800"
+            className="rounded-md bg-red-700 px-4 py-2 text-white hover:bg-red-800 md:ml-auto"
           >
             {currentStep === 3 ? 'Finalizar Compra' : 'Próxima etapa'}
           </button>
