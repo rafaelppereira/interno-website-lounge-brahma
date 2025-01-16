@@ -222,7 +222,7 @@ export function CartPage() {
           >
             <SwiperSlide className="w-full">
               <div className="w-full max-w-md overflow-hidden rounded-sm bg-white">
-                <div className="bg-[url(background.png)] bg-cover bg-center bg-no-repeat p-6 text-white">
+                <div className="bg-[url(/background.png)] bg-cover bg-center bg-no-repeat p-6 text-white">
                   <div
                     className={cn(
                       'flex items-center justify-between bg-cover bg-center bg-no-repeat px-10 py-4',
@@ -326,7 +326,7 @@ export function CartPage() {
 
             <SwiperSlide className="w-full">
               <div className="w-full max-w-md overflow-hidden rounded-sm bg-white">
-                <div className="bg-[url(background.png)] bg-cover bg-center bg-no-repeat p-6 text-white">
+                <div className="bg-[url(/background.png)] bg-cover bg-center bg-no-repeat p-6 text-white">
                   <div
                     className={cn(
                       'flex items-center justify-between bg-cover bg-center bg-no-repeat px-10 py-4',
@@ -430,7 +430,7 @@ export function CartPage() {
 
             <SwiperSlide className="w-full">
               <div className="w-full max-w-md overflow-hidden rounded-sm bg-white">
-                <div className="bg-[url(background.png)] bg-cover bg-center bg-no-repeat p-6 text-white">
+                <div className="bg-[url(/background.png)] bg-cover bg-center bg-no-repeat p-6 text-white">
                   <div
                     className={cn(
                       'flex items-center justify-between bg-cover bg-center bg-no-repeat px-10 py-4',

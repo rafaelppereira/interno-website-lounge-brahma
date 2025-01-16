@@ -610,7 +610,7 @@ export function HomePage() {
       </section>
 
       <section className="relative z-20 -mt-24 flex flex-col border-b-2 border-y-zinc-700 xl:flex-row">
-        <div className="flex min-h-24 flex-1 items-center bg-[url(background.png)] bg-cover bg-center bg-no-repeat py-8 pl-8 lg:items-start xl:pl-20">
+        <div className="flex min-h-24 flex-1 items-center bg-[url(/background.png)] bg-cover bg-center bg-no-repeat py-8 pl-8 lg:items-start xl:pl-20">
           <div
             className={cn(
               `sticky top-[600px] xl:pb-[70px]`,
@@ -722,8 +722,8 @@ export function HomePage() {
                         className={cn(
                           'flex items-center justify-between bg-cover bg-center bg-no-repeat px-10 py-4',
                           i % 2 === 0
-                            ? 'bg-[url(background-gold.png)]'
-                            : 'bg-[url(background.png)]',
+                            ? 'bg-[url(/background-gold.png)]'
+                            : 'bg-[url(/background.png)]',
                         )}
                       >
                         <div className="flex flex-col items-center justify-center">
