@@ -442,7 +442,7 @@ export function HomePage() {
                         to=""
                         target="_blank"
                         title="Clique para visitar nosso Facebook"
-                        className="hover:bg-brand-gold-500 flex size-10 items-center justify-center rounded-full border text-zinc-300 transition-all hover:text-white hover:brightness-75"
+                        className="flex size-10 items-center justify-center rounded-full border text-zinc-300 transition-all hover:bg-brand-gold-500 hover:text-white hover:brightness-75"
                       >
                         <FaFacebookF className="size-5" />
                       </Link>
@@ -505,7 +505,7 @@ export function HomePage() {
               to=""
               target="_blank"
               title="Clique para visitar nosso Facebook"
-              className="hover:bg-brand-gold-500 flex size-12 items-center justify-center rounded-full border text-zinc-300 transition-all hover:text-white hover:brightness-75"
+              className="flex size-12 items-center justify-center rounded-full border text-zinc-300 transition-all hover:bg-brand-gold-500 hover:text-white hover:brightness-75"
             >
               <FaFacebookF className="size-5" />
             </Link>
@@ -547,7 +547,7 @@ export function HomePage() {
                     to=""
                     target="_blank"
                     title="Clique para visitar nosso Facebook"
-                    className="hover:bg-brand-gold-500 flex size-10 items-center justify-center rounded-full border text-zinc-300 transition-all hover:text-white hover:brightness-75"
+                    className="flex size-10 items-center justify-center rounded-full border text-zinc-300 transition-all hover:bg-brand-gold-500 hover:text-white hover:brightness-75"
                   >
                     <FaFacebookF className="size-5" />
                   </Link>
@@ -571,7 +571,7 @@ export function HomePage() {
               </Reveal>
 
               <Reveal>
-                <h2 className="text-shadow-xl mt-5 max-w-4xl select-none text-2xl font-extrabold uppercase tracking-tight text-zinc-200 sm:text-3xl md:text-4xl xl:text-5xl">
+                <h2 className="text-shadow-xl mt-5 max-w-4xl select-none text-xl font-extrabold uppercase tracking-tight text-zinc-200 sm:text-3xl md:text-4xl xl:text-5xl">
                   Viva a{' '}
                   <strong className="text-red-600">melhor experiência</strong>
                   , <br /> no Camarote Lounge Brahma <br /> da{' '}
@@ -1047,7 +1047,7 @@ export function HomePage() {
       {/* Perguntas frequentes */}
       <section ref={refFAQ} className="px-4 py-10 lg:px-40">
         <Reveal>
-          <h2 className="pb-10 text-center text-2xl font-semibold text-zinc-800 lg:text-4xl">
+          <h2 className="pb-10 text-center text-xl font-semibold text-zinc-800 lg:text-4xl">
             FAQ - Perguntas frequentes
           </h2>
         </Reveal>

@@ -178,7 +178,7 @@ export function CartPage() {
                       to=""
                       target="_blank"
                       title="Clique para visitar nosso Facebook"
-                      className="hover:bg-brand-gold-500 flex size-10 items-center justify-center rounded-full border text-zinc-300 transition-all hover:text-white hover:brightness-75"
+                      className="flex size-10 items-center justify-center rounded-full border text-zinc-300 transition-all hover:bg-brand-gold-500 hover:text-white hover:brightness-75"
                     >
                       <FaFacebookF className="size-5" />
                     </Link>
@@ -221,7 +221,7 @@ export function CartPage() {
         </div>
       </header>
 
-      <section className="relative flex w-full flex-col items-center justify-between gap-3 px-4 pb-[8rem] pt-[calc(7rem+4rem)] md:gap-24 lg:px-20 xl:flex-row">
+      <section className="relative flex w-full flex-col items-center justify-between gap-3 px-4 pb-[2rem] pt-[calc(7rem)] md:gap-24 md:pb-[8rem] md:pt-[calc(7rem+4rem)] lg:px-20 xl:flex-row">
         <div className="flex w-full justify-center sm:w-[448px]">
           <Swiper
             effect={'cards'}

@@ -39,7 +39,7 @@ export function Footer() {
           <div className="flex w-full flex-col items-center text-center md:items-start md:text-left">
             <h1 className="text-xl font-semibold text-zinc-200">Menu</h1>
 
-            <div className="mt-4 flex flex-col gap-2 text-zinc-200">
+            <div className="mt-4 flex flex-col items-center gap-2 text-zinc-200 md:items-start md:text-left">
               <Link
                 to="/#proximos-jogos"
                 title="Próximos jogos"
@@ -94,7 +94,7 @@ export function Footer() {
               Redes sociais
             </h1>
 
-            <div className="mt-4 flex flex-col gap-2 text-zinc-200">
+            <div className="mt-4 flex flex-col items-center gap-2 text-zinc-200 md:items-start md:text-left">
               <Link
                 to=""
                 target="_blank"
@@ -130,7 +130,7 @@ export function Footer() {
         <div className="flex">
           <div className="flex w-full flex-col items-center text-center md:items-start md:text-left">
             <h1 className="text-xl font-semibold text-zinc-200">Contato</h1>
-            <div className="mt-4 flex flex-col gap-2 text-zinc-200">
+            <div className="mt-4 flex flex-col items-center gap-2 text-zinc-200 md:items-start md:text-left">
               <Link
                 to=""
                 target="_blank"

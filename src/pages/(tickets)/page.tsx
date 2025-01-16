@@ -186,7 +186,7 @@ export function TicketPage() {
                       to=""
                       target="_blank"
                       title="Clique para visitar nosso Facebook"
-                      className="hover:bg-brand-gold-500 flex size-10 items-center justify-center rounded-full border text-zinc-300 transition-all hover:text-white hover:brightness-75"
+                      className="flex size-10 items-center justify-center rounded-full border text-zinc-300 transition-all hover:bg-brand-gold-500 hover:text-white hover:brightness-75"
                     >
                       <FaFacebookF className="size-5" />
                     </Link>
