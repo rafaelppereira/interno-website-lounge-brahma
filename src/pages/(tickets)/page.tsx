@@ -1,15 +1,25 @@
-import { Menu, Minus, Plus, Ticket, User } from 'lucide-react'
+import {
+  Mail,
+  MapPin,
+  Menu,
+  Minus,
+  Phone,
+  Plus,
+  Ticket,
+  User,
+} from 'lucide-react'
 import { useEffect } from 'react'
-import { FaFacebookF, FaRegImages, FaYoutube } from 'react-icons/fa'
+import { FaFacebookF, FaRegImages, FaWhatsapp, FaYoutube } from 'react-icons/fa'
 import { GrSchedulePlay } from 'react-icons/gr'
 import { HiOutlineTicket } from 'react-icons/hi2'
 import { IoHelpCircleOutline } from 'react-icons/io5'
-import { MdOutlineChair, MdOutlineEmojiEvents } from 'react-icons/md'
+import { MdOutlineEmojiEvents } from 'react-icons/md'
 import { PiInstagramLogoThin } from 'react-icons/pi'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import { cn } from '../../@config/lib/cn'
 import { Game, nextGamesList } from '../../@config/utils/next-games-list'
 import { Footer } from '../../components/footer'
 import { Reveal } from '../../components/reveal'
@@ -21,6 +31,8 @@ export function TicketPage() {
   const gameInfo: Game | undefined = nextGamesList.find(
     (game) => game.slug === slug,
   )
+
+  const { hash } = useLocation()
 
   useEffect(() => {
     window.scroll({
@@ -34,7 +46,7 @@ export function TicketPage() {
       <header className="z-40">
         {/* Menu alternativa + Mobile */}
         <div className="fixed left-0 top-0 z-40 flex h-20 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950/90 px-8 backdrop-blur-sm lg:px-20">
-          <Link to="/" title="Clique para voltar ao início">
+          <Link to="/">
             <img
               className="h-12"
               alt="Logo Lounge Brahma"
@@ -47,48 +59,45 @@ export function TicketPage() {
               <Link
                 to="/#proximos-jogos"
                 title="Próximos jogos"
-                className="py-2 transition-all hover:brightness-75"
+                className={cn(
+                  'py-2 transition-all hover:brightness-75',
+                  hash === '#proximos-jogos' && 'text-red-500',
+                )}
               >
                 Próximos jogos
               </Link>
 
               <Link
-                to="/galeria"
+                to="/#galeria"
                 title="Galeria"
-                className="py-2 transition-all hover:brightness-75"
+                className={cn(
+                  'py-2 transition-all hover:brightness-75',
+                  hash === '#galeria' && 'text-red-500',
+                )}
               >
                 Galeria
               </Link>
 
               <Link
-                to="/cadeiras-cativas"
-                title="Cadeira cativa - Camarote Lounge Brahma"
-                className="hidden py-2 transition-all hover:brightness-75 xl:block"
-              >
-                Cadeira cativa - Camarote Lounge Brahma
-              </Link>
-
-              <Link
-                to="/cadeiras-cativas"
-                title="Cadeira cativa"
-                className="block py-2 transition-all hover:brightness-75 xl:hidden"
-              >
-                Cadeira cativa
-              </Link>
-
-              <Link
-                to="/faca-seu-evento"
+                to="/#faca-seu-evento"
                 title="Faça seu evento"
-                className="py-2 transition-all hover:brightness-75"
+                className={cn(
+                  'py-2 transition-all hover:brightness-75',
+                  hash === '#faca-seu-evento' && 'text-red-500',
+                )}
               >
                 Faça seu evento
               </Link>
+
               <Link
-                to="/perguntas-frequentes"
+                to="/#perguntas-frequentes"
                 title="Pergutas frequentes"
-                className="py-2 transition-all hover:brightness-75"
+                className={cn(
+                  'py-2 transition-all hover:brightness-75',
+                  hash === '#perguntas-frequentes' && 'text-red-500',
+                )}
               >
-                FAQ
+                Perguntas frequentes
               </Link>
             </nav>
 
@@ -134,7 +143,7 @@ export function TicketPage() {
                     </Link>
 
                     <Link
-                      to="/galeria"
+                      to="/#galeria"
                       title="Galeria"
                       className="flex items-center gap-4 rounded-sm bg-zinc-900 px-4 py-3 transition-all hover:brightness-75"
                     >
@@ -143,16 +152,7 @@ export function TicketPage() {
                     </Link>
 
                     <Link
-                      to="/cadeiras-cativas"
-                      title="Cadeira cativa - Camarote Lounge Brahma"
-                      className="flex items-center gap-4 rounded-sm bg-zinc-900 px-4 py-3 transition-all hover:brightness-75"
-                    >
-                      <MdOutlineChair className="size-5" />
-                      Cadeira cativa
-                    </Link>
-
-                    <Link
-                      to="/faca-seu-evento"
+                      to="/#faca-seu-evento"
                       title="Faça seu evento"
                       className="flex items-center gap-4 rounded-sm bg-zinc-900 px-4 py-3 transition-all hover:brightness-75"
                     >
@@ -161,12 +161,12 @@ export function TicketPage() {
                     </Link>
 
                     <Link
-                      to="/perguntas-frequentes"
+                      to="/#perguntas-frequentes"
                       title="Pergutas frequentes"
                       className="flex items-center gap-4 rounded-sm bg-zinc-900 px-4 py-3 transition-all hover:brightness-75"
                     >
                       <IoHelpCircleOutline className="size-5" />
-                      FAQ
+                      Perguntas frequentes
                     </Link>
                   </nav>
 
@@ -773,17 +773,63 @@ export function TicketPage() {
       </section>
 
       <section className="rounded-tl-[5rem] bg-zinc-900 px-8 py-14 lg:px-20">
-        <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-2xl font-bold uppercase">
+        <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-2xl font-bold uppercase text-zinc-200">
           Como chegar na arena
         </h2>{' '}
-        <iframe
-          width="100%"
-          height="450"
-          loading="lazy"
-          className="rounded-sm"
-          referrerPolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.6437214071066!2d-46.476809488786905!3d-23.54531337872251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce66dec98fb855%3A0xf2b061ffbcd2ecf8!2sNeo%20Qu%C3%ADmica%20Arena!5e0!3m2!1spt-BR!2sbr!4v1736974441012!5m2!1spt-BR!2sbr"
-        />
+        <div className="flex flex-col items-center gap-10 md:flex-row">
+          <div className="w-full flex-[1.5]">
+            <Reveal>
+              <iframe
+                width="100%"
+                height="450"
+                loading="lazy"
+                className="rounded-sm"
+                referrerPolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.6437214071066!2d-46.476809488786905!3d-23.54531337872251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce66dec98fb855%3A0xf2b061ffbcd2ecf8!2sNeo%20Qu%C3%ADmica%20Arena!5e0!3m2!1spt-BR!2sbr!4v1736974441012!5m2!1spt-BR!2sbr"
+              />
+            </Reveal>
+          </div>
+
+          <div className="w-full flex-1">
+            <Reveal>
+              <h2 className="text-2xl font-bold text-zinc-200">
+                Nossos contatos
+              </h2>
+
+              <div className="mt-4 space-y-2.5">
+                <div className="flex items-center gap-2 text-zinc-100">
+                  <div className="flex size-10 items-center justify-center rounded-sm bg-zinc-800 text-zinc-100">
+                    <FaWhatsapp className="size-5" />
+                  </div>
+                  +55 11 99802-2480
+                </div>
+
+                <div className="flex items-center gap-2 text-zinc-100">
+                  <div className="flex size-10 items-center justify-center rounded-sm bg-zinc-800 text-zinc-100">
+                    <Phone className="size-5" />
+                  </div>
+                  +55 11 3291-1280
+                </div>
+
+                <div className="flex items-center gap-2 text-zinc-100">
+                  <div className="flex size-10 items-center justify-center rounded-sm bg-zinc-800 text-zinc-100">
+                    <Mail className="size-5" />
+                  </div>
+                  contato@loungebrahma.com.br
+                </div>
+              </div>
+
+              <Button
+                type="button"
+                className="mt-5 rounded-none bg-gradient-to-r from-yellow-400 to-yellow-600 uppercase text-zinc-900"
+                title="Clique para criar uma rota até a arena"
+              >
+                <MapPin className="mr-2 size-4" />
+                Criar rota até a arena
+              </Button>
+            </Reveal>
+          </div>
+        </div>
       </section>
 
       <Footer />

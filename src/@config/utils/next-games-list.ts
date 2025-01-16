@@ -22,7 +22,7 @@ export const nextGamesList: Game[] = [
     opponent: 'Velo Clube',
   },
   {
-    date: 'Quarta-feira - 22/01/2025',
+    date: 'Quarta - 22/01/2025',
     thumbail:
       'https://loungebrahma.com.br/wp-content/uploads/2025/01/cor-agua-padrao.png',
     startTime: 'Abertura: 17H35min',
@@ -55,7 +55,7 @@ export const nextGamesList: Game[] = [
     opponent: 'São Bernardo',
   },
   {
-    date: 'Quarta-feira - 12/02/2025',
+    date: 'Quarta - 12/02/2025',
     thumbail:
       'https://loungebrahma.com.br/wp-content/uploads/2025/01/cor-santos-padrao.png',
     startTime: 'Abertura: 17H35min',

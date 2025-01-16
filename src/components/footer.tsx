@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { cn } from '../@config/lib/cn'
 
 export function Footer() {
-  const { pathname } = useLocation()
+  const { hash } = useLocation()
 
   return (
     <footer className="bg-zinc-900">
@@ -45,7 +45,7 @@ export function Footer() {
                 title="Próximos jogos"
                 className={cn(
                   'flex items-center gap-2 transition-all hover:ml-2',
-                  pathname === '/' && 'font-semibold text-red-500',
+                  hash === '#proximos-jogos' && 'font-semibold text-red-500',
                 )}
               >
                 Próximos jogos
@@ -56,29 +56,18 @@ export function Footer() {
                 title="Galeria"
                 className={cn(
                   'flex items-center gap-2 transition-all hover:ml-2',
-                  pathname === '/' && 'font-semibold text-red-500',
+                  hash === '#galeria' && 'font-semibold text-red-500',
                 )}
               >
                 Galeria
               </Link>
 
               <Link
-                to="/cadeiras-cativas"
-                title="Cadeira cativa"
-                className={cn(
-                  'flex items-center gap-2 transition-all hover:ml-2',
-                  pathname === '/' && 'font-semibold text-red-500',
-                )}
-              >
-                Cadeira cativa
-              </Link>
-
-              <Link
-                to="/faca-seu-evento"
+                to="/#faca-seu-evento"
                 title="Faça seu evento"
                 className={cn(
                   'flex items-center gap-2 transition-all hover:ml-2',
-                  pathname === '/' && 'font-semibold text-red-500',
+                  hash === '#faca-seu-evento' && 'font-semibold text-red-500',
                 )}
               >
                 Faça seu evento
@@ -89,7 +78,8 @@ export function Footer() {
                 to="/#perguntas-frequentes"
                 className={cn(
                   'flex items-center gap-2 transition-all hover:ml-2',
-                  pathname === '/' && 'font-semibold text-red-500',
+                  hash === '#perguntas-frequentes' &&
+                    'font-semibold text-red-500',
                 )}
               >
                 FAQ
