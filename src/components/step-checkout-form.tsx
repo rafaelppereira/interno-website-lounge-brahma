@@ -175,6 +175,16 @@ export function StepCheckoutForm() {
         return (
           <div className="space-y-4">
             <h3 className="mb-4 text-lg font-semibold">Dados do Pagamento</h3>
+
+            <label className="flex cursor-pointer items-center gap-2 rounded-sm bg-zinc-50 px-3 py-2 transition-all hover:bg-zinc-100">
+              <input
+                type="radio"
+                name="payment-value"
+                defaultValue="payment-value"
+                value="payment-value"
+              />
+              Pagamento cartão de crédito
+            </label>
             <div>
               <label className="mb-1 block text-sm font-medium text-gray-700">
                 Número do Cartão
@@ -230,6 +240,17 @@ export function StepCheckoutForm() {
                 />
               </div>
             </div>
+
+            <label className="flex cursor-pointer items-center gap-2 rounded-sm bg-zinc-50 px-3 py-2 transition-all hover:bg-zinc-100">
+              <input type="radio" name="payment-value" />
+              Pagamento via PIX (Approve Pay)
+            </label>
+
+            <img
+              src="/approve.png"
+              alt="Logo da Approve"
+              className="pointer-events-none h-14 w-44 select-none object-cover"
+            />
           </div>
         )
       default:
@@ -284,12 +305,12 @@ export function StepCheckoutForm() {
           <button
             onClick={
               currentStep === 3
-                ? () => alert('Compra finalizada!')
+                ? () => console.log('Compra finalizada!')
                 : handleNextStep
             }
             className="rounded-md bg-red-700 px-4 py-2 text-white hover:bg-red-800 md:ml-auto"
           >
-            {currentStep === 3 ? 'Finalizar Compra' : 'Próxima etapa'}
+            {currentStep === 3 ? 'Finalizar compra' : 'Próxima etapa'}
           </button>
         </div>
       </div>

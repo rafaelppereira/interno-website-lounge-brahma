@@ -95,7 +95,6 @@
     font-family: "Bebas Neue"
   }
 
-
   .swiper {
     width: 100%;
     height: 100%;
@@ -142,24 +141,31 @@
   }
 
   #svg {
-    width: 14rem;
+    width: 16rem;
     stroke: #fff;
-    fill-opacity: 1;
+    fill-opacity: 0;
     stroke-width: 2px;
-    stroke-dasharray: 2000;
-    animation: draw 3s ease 
+    stroke-dasharray: 1000;
+    animation: draw 8s ease-out forwards, fill 2s ease-in-out 2s forwards;
   }
   
   @keyframes draw {
     0% {
-      fill-opacity: 0;
-      stroke-dashoffset: 2000;
+      stroke-dashoffset: 1000;
     }
     100% {
-      fill-opacity: 1;
       stroke-dashoffset: 0;
     }
   }
-
+  
+  @keyframes fill {
+    0% {
+      fill-opacity: 0;
+    }
+    100% {
+      fill-opacity: 1;
+    }
+  }
+  
 
   

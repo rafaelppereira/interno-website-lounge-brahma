@@ -8,7 +8,7 @@ import {
   Ticket,
   User,
 } from 'lucide-react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { FaFacebookF, FaRegImages, FaWhatsapp, FaYoutube } from 'react-icons/fa'
 import { GrSchedulePlay } from 'react-icons/gr'
 import { HiOutlineTicket } from 'react-icons/hi2'
@@ -22,6 +22,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { cn } from '../../@config/lib/cn'
 import { Game, nextGamesList } from '../../@config/utils/next-games-list'
 import { Footer } from '../../components/footer'
+import { Loader } from '../../components/loader'
 import { Reveal } from '../../components/reveal'
 import { Button } from '../../components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '../../components/ui/sheet'
@@ -36,6 +37,26 @@ export function TicketPage() {
 
   const { hash } = useLocation()
 
+  const [hasActiveLoaderInitial, setHasActiveLoaderInitial] = useState(false)
+  const [isLoaderInitialized, setIsLoaderInitialized] = useState(false)
+
+  useEffect(() => {
+    if (!isLoaderInitialized) {
+      const hasLoaderBeenShown = sessionStorage.getItem('loaderShow')
+
+      if (!hasLoaderBeenShown) {
+        setHasActiveLoaderInitial(true)
+        sessionStorage.setItem('loaderShow', 'true')
+
+        setTimeout(() => {
+          setHasActiveLoaderInitial(false)
+        }, 5000)
+      }
+    }
+
+    setIsLoaderInitialized(true)
+  }, [isLoaderInitialized])
+
   useEffect(() => {
     window.scroll({
       top: 0,
@@ -45,6 +66,8 @@ export function TicketPage() {
 
   return (
     <main className="min-h-screen text-zinc-100">
+      <Loader hasActive={hasActiveLoaderInitial} />
+
       <header className="z-40">
         {/* Menu alternativa + Mobile */}
         <div className="fixed left-0 top-0 z-40 flex h-20 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950/90 px-4 backdrop-blur-sm lg:px-20">

@@ -8,7 +8,7 @@ import {
   QrCode,
   User,
 } from 'lucide-react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { FaFacebookF, FaRegImages, FaWhatsapp, FaYoutube } from 'react-icons/fa'
 import { HiOutlineTicket } from 'react-icons/hi2'
 import { IoHelpCircleOutline } from 'react-icons/io5'
@@ -20,6 +20,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { cn } from '../../@config/lib/cn'
 import { Footer } from '../../components/footer'
+import { Loader } from '../../components/loader'
 import { Reveal } from '../../components/reveal'
 import { StepCheckoutForm } from '../../components/step-checkout-form'
 import { Button } from '../../components/ui/button'
@@ -27,6 +28,26 @@ import { Sheet, SheetContent, SheetTrigger } from '../../components/ui/sheet'
 
 export function CartPage() {
   const { hash } = useLocation()
+  const [hasActiveLoaderInitial, setHasActiveLoaderInitial] = useState(false)
+
+  const [isLoaderInitialized, setIsLoaderInitialized] = useState(false)
+
+  useEffect(() => {
+    if (!isLoaderInitialized) {
+      const hasLoaderBeenShown = sessionStorage.getItem('loaderShow')
+
+      if (!hasLoaderBeenShown) {
+        setHasActiveLoaderInitial(true)
+        sessionStorage.setItem('loaderShow', 'true')
+
+        setTimeout(() => {
+          setHasActiveLoaderInitial(false)
+        }, 5000)
+      }
+    }
+
+    setIsLoaderInitialized(true)
+  }, [isLoaderInitialized])
 
   useEffect(() => {
     window.scroll({
@@ -37,6 +58,8 @@ export function CartPage() {
 
   return (
     <main className="overflow-x-hidden">
+      <Loader hasActive={hasActiveLoaderInitial} />
+
       <header className="z-40">
         {/* Menu alternativa + Mobile */}
         <div className="fixed left-0 top-0 z-40 flex h-20 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950 px-4 backdrop-blur-sm lg:px-20">
@@ -221,7 +244,7 @@ export function CartPage() {
         </div>
       </header>
 
-      <section className="relative flex w-full flex-col items-center justify-between gap-3 px-4 pb-[2rem] pt-[calc(7rem)] md:gap-24 md:pb-[8rem] md:pt-[calc(7rem+4rem)] lg:px-20 xl:flex-row">
+      <section className="relative flex w-full flex-col items-center justify-between gap-3 px-4 pb-[2rem] pt-[calc(7rem)] md:gap-24 md:pb-[2rem] md:pt-[calc(7rem)] lg:px-20 xl:flex-row">
         <div className="flex w-full justify-center sm:w-[448px]">
           <Swiper
             effect={'cards'}
