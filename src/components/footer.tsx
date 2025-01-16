@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <footer className="bg-zinc-900">
       <div className="bg-zinc-800">
-        <div className="flex flex-col gap-7 px-8 py-6 lg:flex-row lg:items-center lg:px-20 lg:py-4">
+        <div className="flex flex-col gap-7 px-4 py-6 lg:flex-row lg:items-center lg:px-20 lg:py-4">
           <Link
             to="/"
             title="Clique para voltar ao início"
@@ -34,7 +34,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="grid w-full grid-cols-1 gap-10 px-8 py-14 md:grid-cols-2 lg:grid-cols-4 lg:gap-4 lg:px-20">
+      <div className="grid w-full grid-cols-1 gap-10 px-4 py-14 md:grid-cols-2 lg:grid-cols-4 lg:gap-4 lg:px-20">
         <div className="flex">
           <div className="flex w-full flex-col items-center text-center md:items-start md:text-left">
             <h1 className="text-xl font-semibold text-zinc-200">Menu</h1>

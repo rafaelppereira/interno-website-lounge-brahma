@@ -296,7 +296,7 @@ export function HomePage() {
 
         {/* Menu alternativa + Mobile */}
         {!hasActiveDesktopHeader && (
-          <div className="fixed left-0 top-0 z-40 flex h-20 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950/90 px-8 backdrop-blur-sm lg:px-20">
+          <div className="fixed left-0 top-0 z-40 flex h-20 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950/90 px-4 backdrop-blur-sm lg:px-20">
             <Link to="/">
               <img
                 className="h-12"
@@ -531,7 +531,7 @@ export function HomePage() {
               !hasActiveDesktopHeader ? 'pl-0' : 'pl-20',
             )}
           >
-            <div className="px-8 lg:px-20">
+            <div className="px-4 lg:px-20">
               <Reveal>
                 <div className="flex flex-row gap-4 lg:hidden">
                   <Link
@@ -610,7 +610,7 @@ export function HomePage() {
       </section>
 
       <section className="relative z-20 -mt-24 flex flex-col border-b-2 border-y-zinc-700 xl:flex-row">
-        <div className="flex min-h-24 flex-1 items-center bg-[url(/background.png)] bg-cover bg-center bg-no-repeat py-8 pl-8 lg:items-start xl:pl-20">
+        <div className="flex min-h-24 flex-1 items-center bg-[url(/background.png)] bg-cover bg-center bg-no-repeat py-8 pl-4 lg:items-start xl:pl-20">
           <div
             className={cn(
               `sticky top-[600px] xl:pb-[70px]`,
@@ -664,7 +664,7 @@ export function HomePage() {
           </div>
         </div>
 
-        <div className="flex-[1.8] overflow-hidden bg-zinc-950 bg-cover bg-center bg-no-repeat px-8 py-5 text-white xl:px-5">
+        <div className="flex-[1.8] overflow-hidden bg-zinc-950 bg-cover bg-center bg-no-repeat px-4 py-5 text-white xl:px-5">
           <div className="mb-4 flex items-center justify-between">
             <Reveal classes="hidden md:block">
               <span className="pointer-events-none select-none rounded-sm bg-red-700 px-3 py-1 text-white">
@@ -789,7 +789,7 @@ export function HomePage() {
       </section>
 
       {/* Próximos jogos */}
-      <section ref={refNextGames} className="px-8 py-10 xl:px-20">
+      <section ref={refNextGames} className="px-4 py-10 xl:px-20">
         <div className="flex flex-col gap-4">
           {sortedKeys.map((key, i) => {
             const games = gamesGroupedByMonth[key]
@@ -987,9 +987,9 @@ export function HomePage() {
       {/* Galeria de fotos */}
       <section
         ref={refGalery}
-        className="rounded-br-[3rem] rounded-tl-[3rem] bg-zinc-900 px-8 py-14 md:rounded-br-[5rem] md:rounded-tl-[5rem] lg:px-20"
+        className="rounded-br-[3rem] rounded-tl-[3rem] bg-zinc-900 px-4 py-14 md:rounded-br-[5rem] md:rounded-tl-[5rem] lg:px-20"
       >
-        <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-2xl font-bold uppercase text-zinc-200">
+        <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-xl font-bold uppercase text-zinc-200 md:text-2xl">
           Galeria de fotos
         </h2>
 
@@ -999,7 +999,7 @@ export function HomePage() {
       {/* Faça seu evento */}
       <section
         ref={refEvent}
-        className="flex flex-col-reverse items-start gap-10 rounded-bl-[3rem] bg-zinc-50 px-8 py-14 md:rounded-bl-[5rem] lg:flex-row lg:px-20 xl:items-center"
+        className="flex flex-col-reverse items-start gap-10 rounded-bl-[3rem] bg-zinc-50 px-4 py-14 md:rounded-bl-[5rem] lg:flex-row lg:px-20 xl:items-center"
       >
         <div className="w-full flex-1 overflow-hidden">
           <Reveal classes="w-full">
@@ -1045,7 +1045,7 @@ export function HomePage() {
       </section>
 
       {/* Perguntas frequentes */}
-      <section ref={refFAQ} className="px-8 py-10 lg:px-40">
+      <section ref={refFAQ} className="px-4 py-10 lg:px-40">
         <Reveal>
           <h2 className="pb-10 text-center text-2xl font-semibold text-zinc-800 lg:text-4xl">
             FAQ - Perguntas frequentes
@@ -1202,8 +1202,8 @@ export function HomePage() {
       </section>
 
       {/* Como chegar na arena */}
-      <section className="rounded-tl-[3rem] bg-zinc-900 px-8 py-14 md:rounded-tl-[5rem] lg:px-20">
-        <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-2xl font-bold uppercase text-zinc-200">
+      <section className="rounded-tl-[3rem] bg-zinc-900 px-4 py-14 md:rounded-tl-[5rem] lg:px-20">
+        <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-xl font-bold uppercase text-zinc-200 md:text-2xl">
           Como chegar na arena
         </h2>{' '}
         <div className="flex flex-col items-center gap-10 md:flex-row">

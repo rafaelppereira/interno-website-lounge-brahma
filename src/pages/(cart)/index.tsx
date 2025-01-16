@@ -1,6 +1,15 @@
-import { Menu, Minus, Plus, QrCode, User } from 'lucide-react'
+import {
+  Mail,
+  MapPin,
+  Menu,
+  Minus,
+  Phone,
+  Plus,
+  QrCode,
+  User,
+} from 'lucide-react'
 import { useEffect } from 'react'
-import { FaFacebookF, FaRegImages, FaYoutube } from 'react-icons/fa'
+import { FaFacebookF, FaRegImages, FaWhatsapp, FaYoutube } from 'react-icons/fa'
 import { HiOutlineTicket } from 'react-icons/hi2'
 import { IoHelpCircleOutline } from 'react-icons/io5'
 import { MdOutlineEmojiEvents } from 'react-icons/md'
@@ -10,6 +19,7 @@ import { Autoplay, EffectCards } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { cn } from '../../@config/lib/cn'
+import { Footer } from '../../components/footer'
 import { Reveal } from '../../components/reveal'
 import { StepCheckoutForm } from '../../components/step-checkout-form'
 import { Button } from '../../components/ui/button'
@@ -29,7 +39,7 @@ export function CartPage() {
     <main className="overflow-x-hidden">
       <header className="z-40">
         {/* Menu alternativa + Mobile */}
-        <div className="fixed left-0 top-0 z-40 flex h-20 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950 px-8 backdrop-blur-sm lg:px-20">
+        <div className="fixed left-0 top-0 z-40 flex h-20 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950 px-4 backdrop-blur-sm lg:px-20">
           <Link to="/">
             <img
               className="h-12"
@@ -211,7 +221,7 @@ export function CartPage() {
         </div>
       </header>
 
-      <section className="relative flex w-full flex-col items-center justify-between gap-3 px-8 pb-[8rem] pt-[calc(7rem+4rem)] md:gap-24 lg:px-20 xl:flex-row">
+      <section className="relative flex w-full flex-col items-center justify-between gap-3 px-4 pb-[8rem] pt-[calc(7rem+4rem)] md:gap-24 lg:px-20 xl:flex-row">
         <div className="flex w-full justify-center sm:w-[448px]">
           <Swiper
             effect={'cards'}
@@ -540,6 +550,69 @@ export function CartPage() {
           </Reveal>
         </div>
       </section>
+
+      {/* Como chegar na arena */}
+      <section className="rounded-tl-[3rem] bg-zinc-900 px-4 py-14 md:rounded-tl-[5rem] lg:px-20">
+        <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-xl font-bold uppercase text-zinc-200 md:text-2xl">
+          Como chegar na arena
+        </h2>{' '}
+        <div className="flex flex-col items-center gap-10 md:flex-row">
+          <div className="w-full flex-[1.5]">
+            <Reveal>
+              <iframe
+                width="100%"
+                height="450"
+                loading="lazy"
+                className="rounded-sm"
+                referrerPolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.6437214071066!2d-46.476809488786905!3d-23.54531337872251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce66dec98fb855%3A0xf2b061ffbcd2ecf8!2sNeo%20Qu%C3%ADmica%20Arena!5e0!3m2!1spt-BR!2sbr!4v1736974441012!5m2!1spt-BR!2sbr"
+              />
+            </Reveal>
+          </div>
+
+          <div className="w-full flex-1">
+            <Reveal>
+              <h2 className="text-2xl font-bold text-zinc-200">
+                Nossos contatos
+              </h2>
+
+              <div className="mt-4 space-y-2.5">
+                <div className="flex items-center gap-2 text-zinc-100">
+                  <div className="flex size-10 items-center justify-center rounded-sm bg-zinc-800 text-zinc-100">
+                    <FaWhatsapp className="size-5" />
+                  </div>
+                  +55 11 99802-2480
+                </div>
+
+                <div className="flex items-center gap-2 text-zinc-100">
+                  <div className="flex size-10 items-center justify-center rounded-sm bg-zinc-800 text-zinc-100">
+                    <Phone className="size-5" />
+                  </div>
+                  +55 11 3291-1280
+                </div>
+
+                <div className="flex items-center gap-2 text-zinc-100">
+                  <div className="flex size-10 items-center justify-center rounded-sm bg-zinc-800 text-zinc-100">
+                    <Mail className="size-5" />
+                  </div>
+                  contato@loungebrahma.com.br
+                </div>
+              </div>
+
+              <Button
+                type="button"
+                className="mt-5 rounded-none bg-gradient-to-r from-yellow-400 to-yellow-600 uppercase text-zinc-900"
+                title="Clique para criar uma rota até a arena"
+              >
+                <MapPin className="mr-2 size-4" />
+                Criar rota até a arena
+              </Button>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </main>
   )
 }

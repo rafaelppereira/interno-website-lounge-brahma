@@ -47,7 +47,7 @@ export function TicketPage() {
     <main className="min-h-screen text-zinc-100">
       <header className="z-40">
         {/* Menu alternativa + Mobile */}
-        <div className="fixed left-0 top-0 z-40 flex h-20 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950/90 px-8 backdrop-blur-sm lg:px-20">
+        <div className="fixed left-0 top-0 z-40 flex h-20 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950/90 px-4 backdrop-blur-sm lg:px-20">
           <Link to="/">
             <img
               className="h-12"
@@ -230,7 +230,7 @@ export function TicketPage() {
       </header>
 
       <section className="bg-[url(https://loungebrahma.com.br/wp-content/uploads/2024/11/WhatsApp-Image-2024-11-13-at-10.26.52.jpeg)] bg-cover bg-center bg-no-repeat">
-        <div className="relative flex h-full w-full justify-center bg-gradient-to-t from-zinc-950 via-zinc-800/80 to-zinc-700/90 px-8 pb-[8rem] pt-[calc(7rem+4rem)] lg:px-20">
+        <div className="relative flex h-full w-full justify-center bg-gradient-to-t from-zinc-950 via-zinc-800/80 to-zinc-700/90 px-4 pb-[8rem] pt-[calc(7rem+4rem)] lg:px-20">
           <div className="absolute left-0 top-[calc(50%+2.5rem)] hidden h-40 w-7 -translate-y-1/2 bg-red-700 lg:block" />
           <div className="absolute right-0 top-[calc(50%+2.5rem)] hidden h-40 w-7 -translate-y-1/2 bg-gradient-to-b from-yellow-400 to-yellow-600 lg:block" />
 
@@ -327,7 +327,7 @@ export function TicketPage() {
         </div>
       </section>
 
-      <section className="rounded-br-[3rem] bg-zinc-950 px-8 pb-14 pt-5 md:rounded-br-[5rem] lg:px-20">
+      <section className="rounded-br-[3rem] bg-zinc-950 px-4 pb-14 pt-5 md:rounded-br-[5rem] lg:px-20">
         <Reveal>
           <div className="flex justify-center">
             <div className="flex items-start gap-3">
@@ -341,7 +341,7 @@ export function TicketPage() {
         </Reveal>
 
         <div className="mt-20">
-          <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-2xl font-bold uppercase">
+          <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-xl font-bold uppercase md:text-2xl">
             Tipos de ingressos
           </h2>
 
@@ -737,7 +737,7 @@ export function TicketPage() {
         </div>
       </section>
 
-      <section className="flex flex-col items-start gap-10 bg-zinc-50 px-8 py-14 lg:flex-row lg:px-20 xl:items-center">
+      <section className="flex flex-col items-start gap-10 bg-zinc-50 px-4 py-14 lg:flex-row lg:px-20 xl:items-center">
         <div className="flex-1 overflow-hidden">
           <Reveal>
             <img
@@ -779,8 +779,8 @@ export function TicketPage() {
         </div>
       </section>
 
-      <section className="rounded-tl-[3rem] bg-zinc-900 px-8 py-14 md:rounded-tl-[5rem] lg:px-20">
-        <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-2xl font-bold uppercase text-zinc-200">
+      <section className="rounded-tl-[3rem] bg-zinc-900 px-4 py-14 md:rounded-tl-[5rem] lg:px-20">
+        <h2 className="mb-5 border-l-4 border-l-red-700 pl-5 text-xl font-bold uppercase text-zinc-200 md:text-2xl">
           Como chegar na arena
         </h2>{' '}
         <div className="flex flex-col items-center gap-10 md:flex-row">
