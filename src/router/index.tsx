@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createBrowserRouter } from 'react-router-dom'
 
+import { CartPage } from '../pages/(cart)'
 import { HomePage } from '../pages/(home)/page'
 import { TicketPage } from '../pages/(tickets)/page'
 
@@ -13,6 +14,10 @@ const router: any = createBrowserRouter([
   {
     path: '/ingressos/:slug',
     element: <TicketPage />,
+  },
+  {
+    path: '/carrinho',
+    element: <CartPage />,
   },
 ])
 

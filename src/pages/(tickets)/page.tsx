@@ -15,7 +15,7 @@ import { HiOutlineTicket } from 'react-icons/hi2'
 import { IoHelpCircleOutline } from 'react-icons/io5'
 import { MdOutlineEmojiEvents } from 'react-icons/md'
 import { PiInstagramLogoThin } from 'react-icons/pi'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -31,6 +31,8 @@ export function TicketPage() {
   const gameInfo: Game | undefined = nextGamesList.find(
     (game) => game.slug === slug,
   )
+
+  const navigate = useNavigate()
 
   const { hash } = useLocation()
 
@@ -314,6 +316,7 @@ export function TicketPage() {
 
               <Button
                 type="button"
+                onClick={() => navigate('/carrinho')}
                 className="mt-10 flex rounded-none bg-gradient-to-b from-yellow-400 to-yellow-600 text-zinc-800 lg:hidden"
               >
                 <Ticket className="mr-2 size-4" />
@@ -445,6 +448,7 @@ export function TicketPage() {
                     <Button
                       type="button"
                       title="Clique para comprar o ingresso"
+                      onClick={() => navigate('/carrinho')}
                       className="mt-5 h-12 w-full rounded-none bg-gradient-to-b from-yellow-400 to-yellow-600 font-semibold uppercase text-zinc-700"
                     >
                       <Ticket className="mr-2 size-4" />
@@ -534,6 +538,7 @@ export function TicketPage() {
                     <Button
                       type="button"
                       title="Clique para comprar o ingresso"
+                      onClick={() => navigate('/carrinho')}
                       className="mt-5 h-12 w-full rounded-none bg-gradient-to-b from-yellow-400 to-yellow-600 font-semibold uppercase text-zinc-700"
                     >
                       <Ticket className="mr-2 size-4" />
@@ -625,6 +630,7 @@ export function TicketPage() {
                     <Button
                       type="button"
                       title="Clique para comprar o ingresso"
+                      onClick={() => navigate('/carrinho')}
                       className="mt-5 h-12 w-full rounded-none bg-gradient-to-b from-yellow-400 to-yellow-600 font-semibold uppercase text-zinc-700"
                     >
                       <Ticket className="mr-2 size-4" />
@@ -717,6 +723,7 @@ export function TicketPage() {
                     <Button
                       type="button"
                       title="Clique para comprar o ingresso"
+                      onClick={() => navigate('/carrinho')}
                       className="mt-5 h-12 w-full rounded-none bg-gradient-to-b from-yellow-400 to-yellow-600 font-semibold uppercase text-zinc-700"
                     >
                       <Ticket className="mr-2 size-4" />
