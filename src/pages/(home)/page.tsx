@@ -778,7 +778,7 @@ export function HomePage() {
       {/* Próximos jogos */}
       <section ref={refNextGames} className="px-8 py-10 xl:px-20">
         <div className="flex flex-col gap-4">
-          {sortedKeys.map((key) => {
+          {sortedKeys.map((key, i) => {
             const games = gamesGroupedByMonth[key]
             const [month, year] = key.split('/')
             const monthName = new Date(
@@ -787,181 +787,180 @@ export function HomePage() {
             ).toLocaleString('pt-BR', { month: 'long' })
 
             return (
-              <div
-                key={key}
-                className="flex flex-col items-start gap-4 rounded-md border bg-zinc-50 p-5"
-              >
-                <h2 className="mb-4 mt-5 text-2xl font-bold uppercase tracking-tighter text-zinc-800">
-                  {monthName} {year}
-                </h2>
-                <div className="flex w-full flex-col gap-6">
-                  {games.map((game, i) => (
-                    <div key={i}>
-                      <div className="hidden w-full items-center justify-between border-b border-zinc-200 pb-4 lg:flex">
-                        <div className="flex items-center">
-                          <div className="flex flex-col items-start border-r border-zinc-300 md:w-40">
-                            <h3 className="font-semibold text-zinc-600">
-                              {game.date.split(' ')[0]}{' '}
-                              {game.date.split(' ')[2].split('/')[0]}/
-                              {game.date.split(' ')[2].split('/')[1]}
-                            </h3>
-                            <p className="bg-gradient-to-r from-red-500 to-yellow-600 bg-clip-text text-sm font-semibold text-transparent">
-                              {game.startGameTime.split(': ')[1]}
+              <Reveal key={i}>
+                <div className="flex flex-col items-start gap-4 rounded-md border bg-zinc-50 p-5">
+                  <h2 className="mb-4 mt-5 text-2xl font-bold uppercase tracking-tighter text-zinc-800">
+                    {monthName} {year}
+                  </h2>
+                  <div className="flex w-full flex-col gap-6">
+                    {games.map((game, i) => (
+                      <div key={i}>
+                        <div className="hidden w-full items-center justify-between border-b border-zinc-200 pb-4 lg:flex">
+                          <div className="flex items-center">
+                            <div className="flex flex-col items-start border-r border-zinc-300 md:w-40">
+                              <h3 className="font-semibold text-zinc-600">
+                                {game.date.split(' ')[0]}{' '}
+                                {game.date.split(' ')[2].split('/')[0]}/
+                                {game.date.split(' ')[2].split('/')[1]}
+                              </h3>
+                              <p className="bg-gradient-to-r from-red-500 to-yellow-600 bg-clip-text text-sm font-semibold text-transparent">
+                                {game.startGameTime.split(': ')[1]}
+                              </p>
+                            </div>
+                            <div className="flex items-center border-r border-zinc-300 px-4">
+                              <img
+                                width={90}
+                                alt="Logo Paulistão"
+                                className="pointer-events-none select-none rounded-md object-cover"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe1oPV1qsi5eo5xaYAqjaszaR1yAmwPLRRNA&s"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="flex flex-1 items-center xl:pl-2 2xl:pl-20">
+                            <div className="flex items-center gap-2">
+                              <img
+                                width={60}
+                                alt="Escudo Corinthians"
+                                src="/escudos/corinthians.png"
+                                className="pointer-events-none select-none object-contain"
+                              />
+                              <h2 className="whitespace-nowrap text-left font-semibold">
+                                Corinthians
+                              </h2>
+                            </div>
+                            <p className="shrink-0 bg-gradient-to-r from-red-600 to-yellow-600 bg-clip-text px-4 text-xl font-extrabold text-transparent">
+                              vs.
                             </p>
-                          </div>
-                          <div className="flex items-center border-r border-zinc-300 px-4">
-                            <img
-                              width={90}
-                              alt="Logo Paulistão"
-                              className="pointer-events-none select-none rounded-md object-cover"
-                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe1oPV1qsi5eo5xaYAqjaszaR1yAmwPLRRNA&s"
-                            />
-                          </div>
-                        </div>
-
-                        <div className="flex flex-1 items-center xl:pl-2 2xl:pl-20">
-                          <div className="flex items-center gap-2">
-                            <img
-                              width={60}
-                              alt="Escudo Corinthians"
-                              src="/escudos/corinthians.png"
-                              className="pointer-events-none select-none object-contain"
-                            />
-                            <h2 className="whitespace-nowrap text-left font-semibold">
-                              Corinthians
-                            </h2>
-                          </div>
-                          <p className="shrink-0 bg-gradient-to-r from-red-600 to-yellow-600 bg-clip-text px-4 text-xl font-extrabold text-transparent">
-                            vs.
-                          </p>
-                          <div className="flex shrink-0 items-center gap-2">
-                            <img
-                              width={50}
-                              src={game.shieldTime}
-                              alt={`Escudo ${game.opponent}`}
-                              className="pointer-events-none select-none object-cover"
-                            />
-                            <h2
-                              title={game.opponent}
-                              className="w-26 truncate whitespace-nowrap text-left font-semibold"
-                            >
-                              {game.opponent}
-                            </h2>
-                          </div>
-                        </div>
-
-                        <div className="flex items-start justify-end gap-2">
-                          <div className="flex flex-col items-center gap-2">
-                            <Button
-                              type="button"
-                              title="Clique para comprar os ingressos"
-                              onClick={() =>
-                                navigate(`/ingressos/${game.slug}`)
-                              }
-                              className={
-                                'mt-4 h-10 rounded-none bg-gradient-to-r from-yellow-400 to-yellow-600 text-sm text-zinc-700 transition-all hover:brightness-75'
-                              }
-                            >
-                              <Ticket className="mr-2 size-4" />
-                              Comprar ingressos
-                            </Button>
-
-                            <span className="text-xs font-bold text-zinc-600">
-                              10% desconto: COPA10
-                            </span>
+                            <div className="flex shrink-0 items-center gap-2">
+                              <img
+                                width={50}
+                                src={game.shieldTime}
+                                alt={`Escudo ${game.opponent}`}
+                                className="pointer-events-none select-none object-cover"
+                              />
+                              <h2
+                                title={game.opponent}
+                                className="w-26 truncate whitespace-nowrap text-left font-semibold"
+                              >
+                                {game.opponent}
+                              </h2>
+                            </div>
                           </div>
 
-                          <div className="hidden flex-col items-center gap-2 xl:flex">
-                            <Button
-                              type="button"
-                              title="Clique para comprar os ingressos"
-                              className={
-                                'mt-4 flex h-10 rounded-none border-2 border-zinc-300 bg-transparent text-sm text-zinc-700 transition-all hover:brightness-75'
-                              }
-                            >
-                              <Mail className="mr-2 size-4" />
-                              Lembre-me do jogo
-                            </Button>
+                          <div className="flex items-start justify-end gap-2">
+                            <div className="flex flex-col items-center gap-2">
+                              <Button
+                                type="button"
+                                title="Clique para comprar os ingressos"
+                                onClick={() =>
+                                  navigate(`/ingressos/${game.slug}`)
+                                }
+                                className={
+                                  'mt-4 h-10 rounded-none bg-gradient-to-r from-yellow-400 to-yellow-600 text-sm text-zinc-700 transition-all hover:brightness-75'
+                                }
+                              >
+                                <Ticket className="mr-2 size-4" />
+                                Comprar ingressos
+                              </Button>
+
+                              <span className="text-xs font-bold text-zinc-600">
+                                10% desconto: COPA10
+                              </span>
+                            </div>
+
+                            <div className="hidden flex-col items-center gap-2 xl:flex">
+                              <Button
+                                type="button"
+                                title="Clique para comprar os ingressos"
+                                className={
+                                  'mt-4 flex h-10 rounded-none border-2 border-zinc-300 bg-transparent text-sm text-zinc-700 transition-all hover:brightness-75'
+                                }
+                              >
+                                <Mail className="mr-2 size-4" />
+                                Lembre-me do jogo
+                              </Button>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div className="flex flex-col border-b pb-4 lg:hidden">
-                        <div className="flex w-full items-center justify-between gap-5">
-                          <div className="flex flex-col items-center">
-                            <img
-                              className="size-20 object-contain"
-                              alt="Escudo do Corinthians"
-                              src="/escudos/corinthians.png"
-                            />
+                        <div className="flex flex-col border-b pb-4 lg:hidden">
+                          <div className="flex w-full items-center justify-between gap-5">
+                            <div className="flex flex-col items-center">
+                              <img
+                                className="size-20 object-contain"
+                                alt="Escudo do Corinthians"
+                                src="/escudos/corinthians.png"
+                              />
 
-                            <h2 className="whitespace-nowrap text-left font-semibold">
-                              Corinthians
-                            </h2>
+                              <h2 className="whitespace-nowrap text-left font-semibold">
+                                Corinthians
+                              </h2>
+                            </div>
+
+                            <div className="flex flex-1 flex-col items-center">
+                              <h2 className="text-sm font-bold text-zinc-700">
+                                {game.date.split('-')[1].trim()}
+                              </h2>
+                              <span>{game.startGameTime}</span>
+                            </div>
+
+                            <div className="flex flex-col items-center">
+                              <img
+                                className="size-20 object-contain"
+                                src={game.shieldTime}
+                                alt="Escudo do Corinthians"
+                              />
+
+                              <h2
+                                title={game.opponent}
+                                className="max-w-20 truncate whitespace-nowrap text-left font-semibold"
+                              >
+                                {game.opponent}
+                              </h2>
+                            </div>
                           </div>
+                          <div className="mt-3 flex items-start gap-2">
+                            <div className="flex w-full flex-col items-center gap-2">
+                              <Button
+                                type="button"
+                                title="Clique para comprar os ingressos"
+                                onClick={() =>
+                                  navigate(`/ingressos/${game.slug}`)
+                                }
+                                className={
+                                  'mt-4 h-10 w-full rounded-none bg-gradient-to-r from-yellow-400 to-yellow-600 text-sm text-zinc-700 transition-all hover:brightness-75'
+                                }
+                              >
+                                <Ticket className="mr-2 size-4" />
+                                Comprar ingressos
+                              </Button>
 
-                          <div className="flex flex-1 flex-col items-center">
-                            <h2 className="text-sm font-bold text-zinc-700">
-                              {game.date.split('-')[1].trim()}
-                            </h2>
-                            <span>{game.startGameTime}</span>
-                          </div>
+                              <span className="text-xs font-bold text-zinc-600">
+                                10% desconto: COPA10
+                              </span>
+                            </div>
 
-                          <div className="flex flex-col items-center">
-                            <img
-                              className="size-20 object-contain"
-                              src={game.shieldTime}
-                              alt="Escudo do Corinthians"
-                            />
-
-                            <h2
-                              title={game.opponent}
-                              className="max-w-20 truncate whitespace-nowrap text-left font-semibold"
-                            >
-                              {game.opponent}
-                            </h2>
-                          </div>
-                        </div>
-                        <div className="mt-3 flex items-start gap-2">
-                          <div className="flex w-full flex-col items-center gap-2">
-                            <Button
-                              type="button"
-                              title="Clique para comprar os ingressos"
-                              onClick={() =>
-                                navigate(`/ingressos/${game.slug}`)
-                              }
-                              className={
-                                'mt-4 h-10 w-full rounded-none bg-gradient-to-r from-yellow-400 to-yellow-600 text-sm text-zinc-700 transition-all hover:brightness-75'
-                              }
-                            >
-                              <Ticket className="mr-2 size-4" />
-                              Comprar ingressos
-                            </Button>
-
-                            <span className="text-xs font-bold text-zinc-600">
-                              10% desconto: COPA10
-                            </span>
-                          </div>
-
-                          <div className="w-full flex-col items-center gap-2">
-                            <Button
-                              type="button"
-                              title="Clique para comprar os ingressos"
-                              className={
-                                'mt-4 flex h-10 w-full rounded-none border-2 border-zinc-300 bg-transparent text-sm text-zinc-700 transition-all hover:brightness-75'
-                              }
-                            >
-                              <Mail className="mr-2 size-4" />
-                              Lembre-me do jogo
-                            </Button>
+                            <div className="w-full flex-col items-center gap-2">
+                              <Button
+                                type="button"
+                                title="Clique para comprar os ingressos"
+                                className={
+                                  'mt-4 flex h-10 w-full rounded-none border-2 border-zinc-300 bg-transparent text-sm text-zinc-700 transition-all hover:brightness-75'
+                                }
+                              >
+                                <Mail className="mr-2 size-4" />
+                                Lembre-me do jogo
+                              </Button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                  <div className="h-2 w-full bg-gradient-to-r from-red-600 from-45% via-yellow-600 via-55% to-yellow-600" />
                 </div>
-                <div className="h-2 w-full bg-gradient-to-r from-red-600 from-45% via-yellow-600 via-55% to-yellow-600" />
-              </div>
+              </Reveal>
             )
           })}
         </div>
@@ -985,11 +984,13 @@ export function HomePage() {
         className="flex flex-col-reverse items-start gap-10 rounded-bl-[5rem] bg-zinc-50 px-8 py-14 lg:flex-row lg:px-20 xl:items-center"
       >
         <div className="flex-1 overflow-hidden">
-          <img
-            alt="Imagem do Lounge Brahma"
-            className="sticky top-[100px] w-full select-none rounded-sm border-4 border-zinc-200 transition-all duration-500 hover:scale-105"
-            src="https://loungebrahma.com.br/wp-content/uploads/2024/11/Lounge-Brahma-Corinthians-x-Palmeiras-058.webp"
-          />
+          <Reveal>
+            <img
+              alt="Imagem do Lounge Brahma"
+              className="w-full select-none rounded-sm border-4 border-zinc-200 transition-all duration-500 hover:scale-105"
+              src="https://loungebrahma.com.br/wp-content/uploads/2024/11/Lounge-Brahma-Corinthians-x-Palmeiras-058.webp"
+            />
+          </Reveal>
         </div>
         <div className="flex-[1.8] xl:flex-1">
           <Reveal>

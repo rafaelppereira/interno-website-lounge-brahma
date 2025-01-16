@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 
 import { cn } from '../../@config/lib/cn'
+import { Reveal } from '../reveal'
 
 export const Card = React.memo(
   ({
@@ -60,13 +61,15 @@ export function FocusCardsSlug({ cards }: { cards: Card[] }) {
   return (
     <div className="grid w-full grid-cols-1 gap-10 lg:grid-cols-2 xl:grid-cols-3">
       {cards.map((card, index) => (
-        <Card
-          key={index}
-          card={card}
-          index={index}
-          hovered={hovered}
-          setHovered={setHovered}
-        />
+        <Reveal key={index}>
+          <Card
+            key={index}
+            card={card}
+            index={index}
+            hovered={hovered}
+            setHovered={setHovered}
+          />
+        </Reveal>
       ))}
     </div>
   )
