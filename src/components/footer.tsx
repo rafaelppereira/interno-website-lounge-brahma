@@ -181,7 +181,6 @@ export function Footer() {
         @{format(new Date(), 'yyyy')} Lounge Brahma | Todos os direitos
         reservados
         <span className="ml-1">
-          - Desenvolvido por{' '}
           <Link
             to="https://systemframe.com.br/"
             target="_blank"
